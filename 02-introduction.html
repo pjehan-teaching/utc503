@@ -1,0 +1,245 @@
+<section id="introduction">
+
+    <section>
+        <h2>Paradigmes</h2>
+    </section>
+
+    <section>
+        <h3>Paradigmes</h3>
+        <p>
+            En programmation, un <strong>paradigme</strong> est une manière de programmer, c'est-à-dire une façon de
+            concevoir et de structurer un programme informatique.
+        </p>
+        <p>
+            Il existe plusieurs paradigmes de programmation, chacun ayant ses propres caractéristiques et ses propres
+            avantages. Les principaux paradigmes de programmation sont les suivants :
+        </p>
+        <ul>
+            <li>Impératif</li>
+            <li>Déclaratif</li>
+            <li>Objet</li>
+            <li>Fonctionnel</li>
+            <li>Logique</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Impératif vs Déclaratif</h3>
+        <p>En programmation, il existe deux grandes familles de paradigmes : l'impératif et le déclaratif.</p>
+        <p>
+            L'impératif est basé sur l'écriture de <strong>séquences d'instructions</strong> qui modifient l'état du
+            programme. C'est le cas des langages de programmation orientés objet comme Java, C++, C#, etc.
+            C'est également le cas des langages de programmation procéduraux comme C, Pascal, etc.
+        </p>
+        <p>
+            Le déclaratif, quant à lui, est basé sur la <strong>description de ce que l'on veut obtenir</strong>, sans
+            se soucier de comment cela sera réalisé. C'est le cas des langages de programmation fonctionnels comme
+            Haskell, OCaml, F#, etc ou encore des langages de programmation logiques comme Prolog. D'autres langages
+            comme SQL ou CSS sont également déclaratifs.
+        </p>
+    </section>
+
+    <section>
+        <h3>Impératif vs Déclaratif</h3>
+        <p>On peut donc représenter des paradigmes avec le schéma suivant :</p>
+        <div class="container">
+            <div class="col">
+                <div class="paradigm paradigm--imperative">
+                    <h4>Programmation Impérative</h4>
+                    <div class="paradigm">Programmation Orientée Objet</div>
+                    <div class="paradigm">Programmation Procédurale</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="paradigm paradigm--declarative">
+                    <h4>Programmation Déclarative</h4>
+                    <div class="paradigm">Programmation Fonctionnelle</div>
+                    <div class="paradigm">Programmation Logique</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Langages et paradigmes</h3>
+        <p>
+            Il est important de noter que la plupart des langages de programmation ne sont pas purement impératifs ou
+            déclaratifs. En effet, la plupart des langages de programmation sont des langages <strong>multi-paradigmes</strong>,
+            c'est-à-dire qu'ils permettent de programmer de manière impérative, déclarative, objet, fonctionnelle, etc.
+        </p>
+        <p>
+            Par exemple, <strong>Java est un langage de programmation orienté objet</strong>, mais il permet également
+            de programmer de manière <strong>impérative et fonctionnelle</strong>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exemples - Impératif vs Déclaratif</h3>
+        <p>
+            Pour illustrer la différence entre les paradigmes impératif et déclaratif, prenons un exemple simple : le
+            calcul de la somme des éléments d'un tableau.
+        </p>
+        <p>
+            En programmation impérative, on va écrire une boucle qui parcourt le tableau et qui accumule la somme des
+            éléments :
+        </p>
+        <pre><code class="language-java">int sum = 0;
+for (int i = 0; i &lt; array.length; i++) {
+    sum += array[i];
+}
+System.out.println(sum);</code></pre>
+        <p>
+            En programmation déclarative, on va utiliser une fonction qui calcule la somme des éléments du tableau :
+        </p>
+        <pre><code class="language-java">int sum = Arrays.stream(array).sum();
+System.out.println(sum);</code></pre>
+        <p>
+            Le premier exemple utilise plus précisément le paradigme procédural, tandis que le second exemple utilise
+            le paradigme fonctionnel.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exemples - Procédural vs Orientée Objet</h3>
+        <p>
+            Pour illustrer la différence entre les paradigmes procédural et orienté objet, prenons un exemple simple :
+            la modélisation d'un cercle.
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>Procédural</h4>
+                <pre><code class="language-c">struct Circle {
+    double x, y;
+    double radius;
+};
+
+double circumference(struct Circle c) {
+    return 2 * M_PI * c.radius;
+}
+
+double area(struct Circle c) {
+    return M_PI * c.radius * c.radius;
+}</code></pre>
+            </div>
+            <div class="col">
+                <h4>Orienté Objet</h4>
+                <pre><code class="language-java">public class Circle {
+    private double x, y;
+    private double radius;
+
+    public double circumference() {
+        return 2 * Math.PI * radius;
+    }
+
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+
+    // Getters and setters
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Autres paradigmes - Programmation concurrente</h3>
+        <p>
+            La programmation concurrente est un paradigme de programmation qui consiste à exécuter <strong>plusieurs
+            tâches en parallèle</strong>, c'est-à-dire en même temps. Cela permet d'optimiser les performances d'un
+            programme en utilisant efficacement les ressources matérielles disponibles.
+        </p>
+        <p>
+            Il est possible de programmer de manière concurrente en utilisant des <strong>threads</strong> dans des
+            langages de programmation comme Java, C++, Python, etc. ou encore en utilisant des <strong>promesses</strong>
+            dans des langages de programmation comme JavaScript.
+        </p>
+        <footer>
+            <a href="https://fr.wikipedia.org/wiki/Programmation_concurrente" class="info">Programmation concurrente</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Autres paradigmes - Programmation événementielle</h3>
+        <p>
+            La programmation événementielle est un paradigme de programmation qui consiste à réagir à des événements
+            (clic de souris, pression d'une touche, etc.) en déclenchant des actions associées à ces événements. Cela
+            permet de créer des interfaces utilisateur interactives et réactives.
+        </p>
+        <p>
+            Il est possible de programmer de manière événementielle en utilisant des <strong>gestionnaires d'événements</strong>
+            dans des langages de programmation comme JavaScript, C#, Java, etc.
+        </p>
+        <footer>
+            <a href="https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle" class="info">Programmation événementielle</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Autres paradigmes - Programmation réactive</h3>
+        <p>
+            La programmation réactive est un paradigme de programmation qui consiste à réagir de manière <strong>asynchrone</strong>
+            à des événements en utilisant des <strong>flux de données</strong>. Cela permet de créer des applications
+            réactives et interactives.
+        </p>
+        <p>
+            Il est possible de programmer de manière réactive en utilisant des <strong>observables</strong> dans des
+            langages de programmation comme JavaScript, Java, C#, etc.
+        </p>
+        <p>
+            Elle est également prépondérante dans le développement d'applications web modernes, notamment avec l'utilisation
+            de frameworks comme Angular, React, Vue.js, etc.
+        </p>
+        <footer>
+            <a href="https://fr.wikipedia.org/wiki/Programmation_r%C3%A9active" class="info">Programmation réactive</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Paradigme impératif vs réactif</h3>
+        <div class="container">
+            <div class="col">
+                <h4>Impératif</h4>
+                <pre><code class="language-c">int a = 1;
+int b = 2;
+int sum = a + b;
+
+a = 5;
+
+printf("Sum: %d\n", sum); // Sum: 3</code></pre>
+            </div>
+            <div class="col">
+                <h4>Réactif</h4>
+                <pre><code class="language-javascript">import { signal, computed } from '@preact/signals-core';
+
+let a = signal(1);
+let b = signal(2);
+let sum = computed(() => a.value + b.value);
+
+a.value = 5;
+
+console.log(sum.value); // 7</code></pre>
+            </div>
+        </div>
+        <p>
+            Il n'existe pas de langage de programmation réactif à proprement parler, mais il est possible de programmer
+            de manière réactive en utilisant des bibliothèques et des frameworks qui supportent ce paradigme.
+            (ici, on utilise la bibliothèque <code>@preact/signals-core</code> en JavaScript).
+        </p>
+    </section>
+
+    <section>
+        <h3>Pré-requis</h3>
+        <p>
+            Afin de pouvoir facilement installer les compilateurs et interpréteurs des différents langages de programmation
+            présentés dans ce cours, il est recommandé d'utiliser un <strong>gestionnaire de paquets</strong>.
+        </p>
+        <p>
+            Dans ce cours, nous allons utiliser les gestionnaires de paquets suivants :
+        </p>
+        <ul>
+            <li><a href="https://brew.sh" target="_blank" class="info">Homebrew</a> pour macOS</li>
+            <li><a href="https://scoop.sh" target="_blank" class="info">Scoop</a> pour Windows</li>
+        </ul>
+    </section>
+
+</section>

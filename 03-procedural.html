@@ -1,0 +1,193 @@
+<section id="procedural">
+
+    <section>
+        <h2>Paradigme Procédural</h2>
+    </section>
+
+    <section>
+        <h3>Rappels</h3>
+        <p>
+            Nous allons dans un premier temps faire quelques
+            <strong>rappels sur les bases de la programmation procédurale</strong>.
+        </p>
+        <p>
+            Pour cela, nous allons utiliser le langage <strong>C</strong> qui est un langage de programmation
+            <strong>procédural</strong> et qui a influencé de nombreux autres langages comme le C++, le Java ou le JavaScript.
+        </p>
+        <img src="assets/images/c.png" alt="Logo du langage C">
+    </section>
+
+    <section>
+        <h3>Langage C</h3>
+        <p>
+            Le langage C est un langage de programmation impératif, procédural et structuré.
+        </p>
+        <p>
+            Il a été créé en 1972 par Dennis Ritchie et est toujours très utilisé aujourd'hui.
+        </p>
+        <p>
+            Afin d'écrire des programmes en C, il est nécessaire de disposer d'un compilateur comme <strong>gcc</strong>
+            que nous allons installer sur notre machine :
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>macOS</h4>
+                <pre class="language-bash"><code>brew install gcc</code></pre>
+            </div>
+            <div class="col">
+                <h4>Windows</h4>
+                <pre class="language-bash"><code>scoop install gcc</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exemple</h3>
+        <p>
+            Voici un exemple de programme en C qui affiche un message à l'écran :
+        </p>
+        <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
+        <p>
+            Pour compiler et exécuter ce programme, il suffit de taper les commandes suivantes dans un terminal :
+        </p>
+        <pre><code class="language-shell">gcc hello.c -o hello
+./hello</code></pre>
+    </section>
+
+    <section>
+        <h3>Variables</h3>
+        <p>
+            Les variables sont des emplacements de mémoire qui permettent de stocker des valeurs.
+        </p>
+        <p>
+            En C, il est nécessaire de déclarer le type d'une variable avant de l'utiliser :
+        </p>
+        <pre><code class="language-c">int age = 42;
+float price = 3.14;
+char letter = 'A';</code></pre>
+        <p>
+            Il existe différents types de variables en C comme les <strong>entiers</strong>, les <strong>flottants</strong> ou les <strong>caractères</strong>.
+        </p>
+        <p>
+            Le langage C utilise le <strong>typage statique</strong>, ce qui signifie que le type des variables doit
+            être déclaré explicitement contraitement à des langages comme JavaScript ou Python qui utilisent le
+            <strong>typage dynamique</strong>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Lecture / Écriture</h3>
+        <p>
+            Nous pouvons lire et écrire des valeurs à l'écran en utilisant les fonctions <code>scanf()</code> et
+            <code>printf()</code> :
+        </p>
+        <pre><code class="language-c">int age;
+printf("Quel âge avez-vous ? ");
+scanf("%d", &age);
+printf("Vous avez %d ans.\n", age);</code></pre>
+        <p>
+            Il est important de noter que la fonction <code>scanf()</code> utilise le symbole <code>&</code> pour
+            récupérer l'adresse mémoire de la variable <code>age</code>.
+        </p>
+        <p>
+            Cela est dû au fait que les paramètres de la fonction <code>scanf()</code> sont passés par référence
+            contrairement à la fonction <code>printf()</code> qui les passe par valeur.
+        </p>
+        <p>
+            Dans les deux cas, il est nécessaire de préciser le type de la variable à l'aide de symboles comme
+            <code>%d</code> pour les entiers, <code>%f</code> pour les flottants, <code>%c</code> pour les caractères...
+        </p>
+        <footer>
+            <a href="https://en.wikipedia.org/wiki/C_data_types" class="info" target="_blank">
+                Types de données en C
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Conditions</h3>
+        <p>
+            Les structures de contrôle permettent de contrôler le flux d'exécution d'un programme.
+        </p>
+        <p>
+            En C, on retrouve les structures de contrôle classiques comme les <strong>conditions</strong> et les <strong>boucles</strong> :
+        </p>
+        <pre><code class="language-c">if (age &gt;= 18) {
+    printf("Vous êtes majeur.\n");
+} else {
+    printf("Vous êtes mineur.\n");
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Boucles</h3>
+        <p>
+            Les boucles permettent de répéter des instructions un certain nombre de fois.
+        </p>
+        <p>
+            En C, on retrouve les boucles <strong>while</strong>, <strong>do...while</strong> et <strong>for</strong> :
+        </p>
+        <pre><code class="language-c">int i = 0;
+while (i &lt; 10) {
+    printf("%d\n", i);
+    i++;
+}</code></pre>
+        <pre><code class="language-c">int j = 0;
+do {
+    printf("%d\n", j);
+    j++;
+} while (j &lt; 10);</code></pre>
+        <pre><code class="language-c">for (int k = 0; k &lt; 10; k++) {
+    printf("%d\n", k);
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercice - Plus ou moins</h3>
+        <p>
+            Nous allons maintenant mettre en pratique les notions que nous venons de voir avec un exercice.
+        </p>
+        <p>
+            L'objectif est d'écrire un programme en C qui génère un nombre aléatoire entre 1 et 100 et qui demande à
+            l'utilisateur de deviner ce nombre.
+        </p>
+        <p>
+            Le programme doit afficher "Plus" si le nombre à deviner est plus grand que celui proposé par l'utilisateur,
+            "Moins" s'il est plus petit et "Bravo !" s'il est égal.
+        </p>
+        <p>
+            Vous pouvez utiliser la fonction <code>rand()</code> pour générer un nombre aléatoire et la fonction
+            <code>scanf()</code> pour lire l'entrée de l'utilisateur.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exercice - Plus ou moins (avancé)</h3>
+        <p>
+            Pour les plus avancés, vous pouvez améliorer le programme précédent en ajoutant les fonctionnalités
+            suivantes :
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Afficher le nombre de tentatives à chaque essai.
+                </li>
+                <li>
+                    Ajouter un timer pour limiter le temps de jeu (30 secondes).
+                </li>
+                <li>
+                    Afficher le nombre à deviner à la fin du jeu si l'utilisateur n'a pas trouvé.
+                </li>
+                <li>
+                    Ajouter un niveau de difficulté (facile, moyen, difficile) qui influe sur la plage de nombres à deviner.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+</section>

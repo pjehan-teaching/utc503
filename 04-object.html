@@ -1,0 +1,455 @@
+<section id="object">
+
+    <section>
+        <h2>Paradigmes Objet</h2>
+    </section>
+
+    <section>
+        <h3>Historique</h3>
+        <p>
+            Le <strong>paradigme objet</strong> est apparu dans les années 1960 avec le langage de programmation Simula.
+            Il a été popularisé dans les années 1980 avec l'arrivée de langages de programmation orientés objet comme
+            Smalltalk, C++ et Java.
+        </p>
+    </section>
+
+    <section>
+        <h3>Java</h3>
+        <p>
+            Afin d'illustrer les concepts de la programmation orientée objet, nous allons utiliser le langage Java.
+        </p>
+        <p>
+            Java est un langage de programmation de haut niveau, compilé et orienté objet. Il a été créé en 1995 par Sun
+            Microsystems et est toujours très utilisé aujourd'hui.
+        </p>
+        <p>
+            Pour écrire et exécuter du code Java, il est nécessaire d'installer le <strong>JDK</strong> (Java Development Kit)
+            sur votre machine. Voici les commandes à taper dans un terminal pour installer le JDK :
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>macOS</h4>
+                <pre class="language-bash"><code>brew install openjdk</code></pre>
+            </div>
+            <div class="col">
+                <h4>Windows</h4>
+                <pre class="language-bash"><code>scoop bucket add java
+scoop install openjdk</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Hello world</h3>
+        <p>
+            Voici un exemple de programme Java qui affiche un message à l'écran :
+        </p>
+        <pre><code class="language-java">public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</code></pre>
+        <p>
+            Comme pour le langage C, la méthode <code class="language-java">main()</code> est le point d'entrée du programme Java.
+        </p>
+        <p>
+            Pour compiler et exécuter ce programme, il suffit de taper les commandes suivantes dans un terminal :
+        </p>
+        <pre><code class="language-shell">javac HelloWorld.java</code></pre>
+        <pre><code class="language-shell">java HelloWorld</code></pre>
+    </section>
+
+    <section>
+        <h3>Classes et objets</h3>
+        <p>
+            En POO, un <strong>objet</strong> est une instance d'une <strong>classe</strong>.
+            Une classe est un modèle qui définit les <strong>attributs</strong> (ou propriétés) et les
+            <strong>méthodes</strong> (fonctions) communs à tous les objets de cette classe.
+        </p>
+        <p>
+            Par exemple, une classe <code class="language-java">Circle</code> peut avoir des attributs comme le rayon
+            et des méthodes comme le calcul de la circonférence et de l'aire du cercle :
+        </p>
+        <pre><code class="language-java">public class Circle {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double circumference() {
+        return 2 * Math.PI * radius;
+    }
+
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Packages</h3>
+        <p>
+            Un <strong>package</strong> est un regroupement logique de classes et d'interfaces en Java.
+            Il permet d'organiser et de structurer le code source en modules réutilisables.
+        </p>
+        <p>
+            Pour créer un package, il suffit de déclarer le nom du package en haut du fichier Java :
+        </p>
+        <pre><code class="language-java">package com.mycompany.shapes;</code></pre>
+        <p>
+            Par convention, le nom d'un package est en minuscules et correspond à l'arborescence des répertoires.
+        </p>
+        <p>
+            Nous allons donc positionner la classe <code class="language-java">Circle</code> dans le dossier
+            <code class="language-shell">src/main/java/com/mycompany/shapes/Circle.java</code>.
+        </p>
+        <footer>
+            <a href="https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html" class="info" target="_blank">
+                Maven - Structure standard des répertoires
+            </a>
+            <a href="https://code.visualstudio.com/docs/java/java-project#_configure-classpath-for-unmanaged-folders" class="info" target="_blank">
+                VS Code - Configurer le classpath
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Constructeurs</h3>
+        <p>
+            Un <strong>constructeur</strong> est une méthode spéciale d'une classe qui est appelée lors de la création
+            d'un objet. Il permet d'initialiser les attributs de l'objet avec des valeurs par défaut.
+        </p>
+        <p>
+            En Java, un constructeur a le même nom que la classe et ne renvoie pas de valeur. Il peut être surchargé
+            avec des paramètres différents pour initialiser les attributs de l'objet :
+        </p>
+        <pre><code class="language-java">public class Circle {
+    private double radius;
+
+    public Circle() { // Constructeur par défaut
+        this.radius = 5;
+    }
+
+    public Circle(double radius) { // Constructeur avec paramètre
+        this.radius = radius;
+    }
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Héritage</h3>
+        <p>
+            L'<strong>héritage</strong> est un mécanisme de la programmation orientée objet qui permet à une classe
+            (appelée <strong>classe fille</strong>) d'hériter des attributs et des méthodes d'une autre classe
+            (appelée <strong>classe mère</strong>).
+        </p>
+        <p>
+            En Java, l'héritage est réalisé à l'aide du mot-clé <code class="language-java">extends</code> :
+        </p>
+        <pre><code class="language-java">public class Circle extends Shape {
+    // Attributs et méthodes de la classe Shape
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Encapsulation</h3>
+        <p>
+            L'<strong>encapsulation</strong> est un principe de la programmation orientée objet qui consiste à regrouper
+            les données (attributs) et les méthodes qui les manipulent au sein d'une même classe.
+        </p>
+        <p>
+            En Java, l'encapsulation est réalisée en déclarant les attributs d'une classe comme <code>private</code>
+            et en fournissant des méthodes publiques pour y accéder (getters) et les modifier (setters) :
+        </p>
+        <pre><code class="language-java">public class Circle {
+    private double radius;
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Abstraction</h3>
+        <p>
+            L'<strong>abstraction</strong> est un principe de la programmation orientée objet qui consiste à cacher les
+            détails d'implémentation d'une classe pour ne montrer que les fonctionnalités essentielles.
+        </p>
+        <p>
+            En Java, l'abstraction est réalisée à l'aide de <strong>classes abstraites</strong>
+            et d'<strong>interfaces</strong>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Classes abstraites</h3>
+        <p>
+            Une <strong>classe abstraite</strong> est une classe qui ne peut pas être instanciée et qui peut contenir
+            des méthodes abstraites (sans corps) qui doivent être implémentées par les classes filles.
+        </p>
+        <pre><code class="language-java">public abstract class Shape {
+    public abstract double area();
+}</code></pre>
+        <p>
+            Cette classe ne pourra pas être instanciée, mais servira de modèle pour les classes filles qui devront
+            implémenter la méthode <code class="language-java">area()</code>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Interfaces</h3>
+        <p>
+            Une <strong>interface</strong> est un contrat qui définit les méthodes qu'une classe doit implémenter.
+            En Java, une classe peut implémenter plusieurs interfaces, mais ne peut hériter que d'une seule classe.
+        </p>
+        <pre><code class="language-java">public interface Drawable {
+    void draw();
+    void fill();
+    void erase();
+}</code></pre>
+        <p>
+            Une classe qui implémente une interface doit fournir une implémentation pour toutes les méthodes de l'interface.
+        </p>
+    </section>
+
+    <section>
+        <h3>Polymorphisme</h3>
+        <p>
+            Le <strong>polymorphisme</strong> est un concept de la programmation orientée objet qui permet à un objet
+            d'adopter plusieurs formes. Cela signifie qu'un objet peut être traité comme un objet de sa classe ou comme
+            un objet de sa classe parente ou d'une interface qu'il implémente.
+        </p>
+        <p>
+            On pourrait par exemple avoir un tableau d'objets de type <code>Shape</code> qui contient des objets de type
+            <code>Circle</code>, <code>Rectangle</code> ou <code>Triangle</code>:
+        </p>
+        <pre><code class="language-java">Shape[] shapes = new Shape[3];
+shapes[0] = new Circle(5);
+shapes[1] = new Rectangle(10, 20);
+shapes[2] = new Triangle(3, 4, 5);
+
+for (Shape shape : shapes) {
+    System.out.println(shape.area());
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Duck Typing</h3>
+        <p>
+            Le <strong>duck typing</strong> est un concept de programmation objet qui consiste à vérifier la présence de
+            méthodes ou d'attributs sur un objet plutôt que de vérifier son type. En d'autres termes, si un objet se comporte
+            comme un canard (c'est-à-dire qu'il a une méthode <code>quack()</code>), alors on peut le considérer comme un canard.
+        </p>
+        <p>
+            Certains langages de programmation orientés objet, comme Python et Ruby utilisent le duck typing.
+            Cependant, des langages comme Java, C# ou C++ utilisent un typage statique, ce qui signifie que le type
+            d'un objet doit être déclaré explicitement.
+        </p>
+        <footer>
+            <a href="https://fr.wikipedia.org/wiki/Duck_typing" target="_blank" class="info">Duck typing</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Duck Typing en Python</h3>
+        <pre><code class="language-python">class Duck:
+    def quack(self):
+        print("Quack!")
+
+class Person:
+    def quack(self):
+        print("I'm quacking like a duck!")
+
+def make_it_quack(obj):
+    obj.quack()
+
+donald = Duck()
+alice = Person()
+
+make_it_quack(donald)  # Output: Quack!
+make_it_quack(alice)   # Output: I'm quacking like a duck!</code></pre>
+    </section>
+
+    <section>
+        <h3>Généricité</h3>
+        <p>
+            La <strong>généricité</strong> est un concept de programmation qui permet de créer des classes, des interfaces
+            ou des méthodes qui peuvent fonctionner avec différents types de données sans être spécifiques à un type particulier.
+        </p>
+        <p>
+            En Java, la généricité est réalisée à l'aide de <strong>types paramétrés</strong> (ou generics) :
+        </p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-java">public class Box&lt;T&gt; {
+    private T value;
+
+    public Box(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}</code></pre>
+            </div>
+            <div class="col">
+                <pre><code class="language-java">Box&lt;String&gt; box1 = new Box&lt;String&gt;("Hello, World!");
+Box&lt;Integer&gt; box2 = new Box&lt;Integer&gt;(42);
+
+String value1 = box1.getValue();
+Integer value2 = box2.getValue();</code></pre>
+            </div>
+        </div>
+        <footer>
+            <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9ricit%C3%A9" target="_blank" class="info">Généricité</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Généricité - Exemples</h3>
+        <p>
+            En JAVA, la généricité est régulièrement utilisée pour les collections :
+        </p>
+        <pre><code class="language-java">List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+list.add("Hello");
+list.add("World");
+
+for (String item : list) {
+    System.out.println(item);
+}</code></pre>
+        <p>
+            On peut également utiliser la généricité pour les classes abstraites et les interfaces :
+        </p>
+        <pre><code class="language-java">public interface List&lt;T&gt; {
+    void add(T item);
+    T get(int index);
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Reflection</h3>
+        <p>
+            La <strong>reflection</strong> est un mécanisme qui permet à un programme de s'analyser lui-même et d'interagir
+            avec ses propres structures internes (classes, méthodes, attributs, etc.).
+        </p>
+        <p>
+            On peut distinguer deux techniques de réflexion :
+        </p>
+        <ul>
+            <li>
+                <strong>Introspection</strong> : permet de connaître les propriétés et les méthodes d'un objet à l'exécution.
+            </li>
+            <li>
+                <strong>Intercession</strong> : permet de modifier les propriétés et les méthodes d'un objet à l'exécution.
+            </li>
+        </ul>
+        <footer>
+            <a href="https://fr.wikipedia.org/wiki/R%C3%A9flexion_(informatique)" target="_blank" class="info">Reflection</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Introspection en Java</h3>
+        <p>
+            En Java, la réflexion est réalisée à l'aide de la classe <code>Class</code> qui permet d'obtenir des informations
+            sur une classe à l'exécution :
+        </p>
+        <pre><code class="language-java">public class ReflectionExample {
+    public static void main(String[] args) {
+        Class&lt;?&gt; stringClass = String.class;
+
+        System.out.println("Nom de la classe : " + stringClass.getName()); // java.lang.String
+        System.out.println("Package de la classe : " + stringClass.getPackage()); // package java.lang
+        System.out.println("Méthodes de la classe : " + Arrays.toString(stringClass.getMethods())); // [toString, hashCode, equals, ...]
+    }
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Intercession en Java</h3>
+        <p>
+            En Java, la réflexion permet également d'appeler des méthodes et de modifier des attributs d'un objet à l'exécution :
+        </p>
+        <pre><code class="language-java">public class ReflectionExample {
+    public static void main(String[] args) throws Exception {
+        Class&lt;?&gt; stringClass = String.class;
+        Object obj = stringClass.getConstructor(String.class).newInstance("Hello, World!");
+
+        Method method = stringClass.getMethod("toUpperCase");
+        String result = (String) method.invoke(obj);
+
+        System.out.println(result);
+    }
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Réflexion - Exercice Service Container</h3>
+        <p>
+            Créez un <strong>Service Container</strong> en Java qui permet d'enregistrer des services et de les récupérer
+            à l'aide de leur nom.
+        </p>
+        <p>
+            Un service est une instance d'une classe que l'on peut enregistrer dans le container avec une clé (nom) et
+            récupérer à l'aide de cette clé.
+        </p>
+        <p>
+            Voici l'interface que l'on utilisera pour créer le Service Container :
+        </p>
+        <pre><code class="language-java">public interface ServiceContainerInterface {
+    public &lt;T&gt; T registerService(T service);
+    public &lt;T&gt; T getService(Class&lt;T&gt; serviceClass) throws Exception;
+}</code></pre>
+        <p>
+            La méthode <code class="language-java">getService()</code> fera appel à la réflexion pour instancier un
+            service si celui-ci n'est pas déjà enregistré dans le container.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exercice avancé - Pattern Adapter 🦃 -> 🦆</h3>
+        <p>
+            Utilisez le design pattern Adapter afin de contourner l'absence de duck typing en Java.
+        </p>
+        <p>
+            Créez une interface <code>Duck</code> avec une méthode <code>quack()</code>.
+        </p>
+        <p>
+            Créez une classe <code>MallardDuck</code> 🦆 qui implémente l'interface <code>Duck</code>.
+        </p>
+        <p>
+            Créez une classe <code>Turkey</code> 🦃 avec une méthode <code>gobble()</code>.
+        </p>
+        <p>
+            Créez une classe <code>TurkeyAdapter</code> qui implémente l'interface <code>Duck</code> et qui utilise un objet <code>Turkey</code> pour adapter les méthodes <code>quack()</code> et <code>gobble()</code>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exercice avancé - Pattern Observer</h3>
+        <p>
+            Utilisez le design pattern Observer pour créer un système de notifications.
+        </p>
+        <p>
+            Créez une interface <code>Observer</code> avec une méthode <code>update()</code>.
+        </p>
+        <p>
+            Créez une interface <code>Subject</code> avec des méthodes pour ajouter, supprimer et notifier les observateurs.
+        </p>
+        <p>
+            Créez une classe <code>NotificationSystem</code> qui implémente l'interface <code>Subject</code>.
+        </p>
+        <p>
+            Créez une classe <code>Notification</code> qui implémente l'interface <code>Observer</code>.
+        </p>
+        ...
+    </section>
+
+</section>

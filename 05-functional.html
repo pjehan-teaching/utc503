@@ -1,0 +1,580 @@
+<section id="functional">
+
+    <section>
+        <h2>Paradigmes Fonctionnel</h2>
+    </section>
+
+    <section>
+        <h3>Programmation fonctionnelle</h3>
+        <p>
+            La programmation fonctionnelle est un <strong>paradigme de programmation</strong> qui considère le calcul
+            comme l'évaluation de fonctions mathématiques et évite les changements d'état et les données mutables.
+        </p>
+        <p>
+            Les langages de programmation fonctionnelle sont basés sur les concepts de fonctions pures, d'immuabilité et de récursivité.
+        </p>
+    </section>
+
+    <section>
+        <h3>Languages fonctionnels</h3>
+        <ul>
+            <li>
+                <a href="https://www.haskell.org/" target="_blank">Haskell</a> :
+                langage de programmation fonctionnel pur, créé en 1990. Ce langage essai de respecter le plus possible
+                les principes de la programmation fonctionnelle.
+            </li>
+            <li>
+                <a href="https://fsharp.org/" target="_blank">F#</a> :
+                langage de programmation fonctionnel impératif, créé en 2005 par Microsoft. Il est utilisé pour le
+                développement d'applications web, mobiles et cloud.
+            </li>
+            <li>
+                <a href="https://www.erlang.org/" target="_blank">Erlang</a> :
+                langage de programmation fonctionnel concurrent, créé en 1986 par la société Ericsson. Il est utilisé
+                pour le développement de systèmes distribués et tolérants aux pannes (let it crash).
+            </li>
+            <li>
+                <a href="https://www.scala-lang.org/" target="_blank">Scala</a> :
+                langage de programmation fonctionnel et orienté objet, créé en 2003. Il est basé sur la machine virtuelle
+                Java et permet de combiner les avantages de la programmation fonctionnelle et de la programmation orientée objet.
+            </li>
+        </ul>
+        <p>
+            Par la suite, nous aborderons quelques examples de programmation fonctionnelle Haskell que vous pourrez
+            exécuter directement dans votre navigateur (<a href="https://play.haskell.org/">https://play.haskell.org/</a>).
+        </p>
+    </section>
+
+    <section>
+        <h3>JavaScript</h3>
+        <p>
+            JavaScript est un langage de programmation de haut niveau, interprété, multi-paradigme.
+        </p>
+        <p>
+            Il s'agit initialement d'un <strong>langage de script pour les pages web</strong>, mais il est également
+            utilisé pour programmer des serveurs, des applications mobiles et des jeux vidéo...
+        </p>
+        <p>
+            Nous allons utiliser ensemble Node.js pour exécuter du code JavaScript en mode console.
+        </p>
+        <p>
+            Voici les commandes à taper dans un terminal pour installer Node.js et npm :
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>macOS</h4>
+                <pre><code class="language-bash">brew install node</code></pre>
+            </div>
+            <div class="col">
+                <h4>Windows</h4>
+                <pre><code class="language-bash">scoop install nodejs</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Node.js</h3>
+        <p>
+            Node.js est un environnement d'exécution <strong>JavaScript côté serveur</strong>,
+            basé sur le moteur JavaScript V8 de Google.
+        </p>
+        <p>
+            Il permet d'exécuter du code JavaScript en dehors d'un navigateur web, et d'interagir avec le système
+            d'exploitation.
+        </p>
+        <p>
+            Pour créer un projet Node.js, il suffit de créer un fichier <code>index.js</code>
+            et d'y écrire du code JavaScript :
+        </p>
+        <pre><code class="language-js">console.log('Hello, World!');</code></pre>
+        <p>
+            Pour exécuter ce code, il suffit de taper la commande suivante dans un terminal :
+        </p>
+        <pre><code class="language-bash">node index.js</code></pre>
+    </section>
+
+    <section>
+        <h3>Fonctions pures</h3>
+        <p>
+            Une fonction pure est une fonction qui, pour une entrée donnée, retourne
+            <strong>toujours la même sortie</strong> et n'a <strong>pas d'effets de bord</strong>.
+        </p>
+        <p>
+            Un contre-exemple en JavaScript est la fonction <code class="language-js">sort()</code> qui modifie l'ordre
+            des éléments d'un tableau au lieu de retourner un nouveau tableau trié comme le ferait une fonction pure
+            telle que <code class="language-js">filter()</code>.
+        </p>
+        <pre><code class="language-js">const arr = [3, 1, 2];
+arr.sort(); // Cette fonction va modifier la variable arr
+console.log(arr); // [1, 2, 3]
+arr.filter(function (x) { return x > 1; }); // Cette fonction ne va pas modifier arr mais retourner un nouveau tableau
+console.log(arr); // [1, 2, 3]</code></pre>
+        <p>
+            La fonction <code class="language-js">sort()</code> est un exemple de fonction impure, car elle modifie
+            l'état global du tableau <code class="language-js">arr</code> et a donc un effet de bord.
+        </p>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted" class="info">
+                MDN Web Docs - Array.prototype.toSorted()
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Fonctions pures</h3>
+        <p>
+            Dans l'exemple ci-dessous, la fonction <code class="language-js">calculateAge</code> n'est pas une fonction
+            pure, car elle utilise la date actuelle pour calculer l'âge de l'utilisateur.
+        </p>
+        <pre><code class="language-js">function calculateAge(birthDate) {
+    const now = new Date(); // Ne retourne pas toujours la même valeur
+    const diff = now - birthDate;
+    const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+    return age;
+}</code></pre>
+        <p>
+            Pour rendre cette fonction pure, il faudrait passer la date actuelle en paramètre.
+        </p>
+    </section>
+
+    <section>
+        <h3>Fonctions pures</h3>
+        <p>
+            Les fonctions pures ont plusieurs avantages :
+        </p>
+        <ul>
+            <li>
+                Elles sont plus faciles à <strong>tester</strong>.<br>
+                Dans l'exemple précédent, il est difficile de tester la fonction
+                <code class="language-js">calculateAge()</code> car elle dépend de la date actuelle et le résultat du
+                test variera en fonction de la date d'exécution.
+            </li>
+            <li>
+                Elles sont plus faciles à <strong>comprendre</strong>.<br>
+                Les fonctions pures sont auto-documentées, car elles ne dépendent que de leurs paramètres d'entrée.
+            </li>
+            <li>
+                Elles sont plus faciles à <strong>paralléliser</strong>.<br>
+                Les fonctions pures peuvent être exécutées en parallèle sans risque de conflits de données, car elles
+                n'ont pas d'effets de bord comme par exemple la modification d'une variable globale.
+            </li>
+            <li>
+                Elles sont plus faciles à <strong>optimiser</strong>.<br>
+                Les fonctions pures peuvent être mises en cache pour éviter de recalculer le même résultat plusieurs
+                fois (mémoïsation).
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>React</h3>
+        <p>
+            React est une bibliothèque JavaScript open-source pour la <strong>création d'interfaces utilisateur</strong>
+            qui utilise le paradigme de <strong>programmation fonctionnelle</strong> (bien qu'il était possible dans
+            les premières versions de React de créer des composants en utilisant le paradigme de la programmation
+            orientée objet).
+        </p>
+        <p>
+            React utilise des composants pour structurer l'interface utilisateur et
+            <a href="https://react.dev/reference/rules/components-and-hooks-must-be-pure" target="_blank">encourage</a>
+            la création de composants <strong>purs</strong> qui ne dépendent que de leurs propriétés (props) pour
+            afficher leur état.
+        </p>
+        <p>
+            React utilise aussi le concept de
+            <a href="https://react.dev/learn/react-compiler#what-does-the-compiler-do" target="_blank">mémoïsation</a>
+            pour éviter de recalculer le rendu d'un composant si ses propriétés n'ont pas changé.
+        </p>
+    </section>
+
+    <section>
+        <h3>Expressions lambda</h3>
+        <p>
+            Les expressions lambda (également appelées fonctions anonymes) sont des fonctions sans nom qui sont souvent
+            utilisées pour passer des fonctions en tant qu'arguments à d'autres fonctions.
+        </p>
+        <p>
+            Nous avons vu un exemple d'expression lambda dans la section précédente avec la fonction
+            <code class="language-js">filter()</code> :
+        </p>
+        <pre><code class="language-js">const arr = [1, 2, 3];
+const filtered = arr.filter(function (x) { return x > 1; });</code></pre>
+    </section>
+
+    <section>
+        <h3>Expressions lambda</h3>
+        <p>
+            En JavaScript, les expressions lambda peuvent être écrites de manière plus concise à l'aide de la syntaxe
+            des <strong>fonctions fléchées</strong> :
+        </p>
+        <pre><code class="language-js">const arr = [1, 2, 3];
+const filtered = arr.filter(x => x > 1);</code></pre>
+        <p>
+            Les fonctions fléchées sont plus courtes et plus lisibles que les fonctions anonymes traditionnelles.
+        </p>
+        <p>
+            Hormis une différence de syntaxe, les
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">fonctions fléchées</a>
+            ont un comportement légèrement différent en ce qui concerne le mot-clé <code class="language-js">this</code>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Expressions lambda</h3>
+        <p>
+            On retrouve les expressions lambda dans de nombreux langages de programmation :
+        </p>
+        <ul>
+            <li>
+                En Python :<br>
+                <code class="language-python">square = lambda x: x * x</code>.
+            </li>
+            <li>
+                En C# :<br>
+                <code class="language-csharp">Func&lt;int, int&gt; square = x => x * x;</code>.
+            </li>
+            <li>
+                En Java :<br>
+                <code class="language-java">Function&lt;Integer, Integer&gt; square = x -> x * x;</code>.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Expressions lambda - Exercice</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez une fonction lambda qui filtre les nombres pairs d'un tableau.
+                </li>
+                <li>
+                    Créez une fonction lambda qui affiche un décompte de 3 à 0 en utilisant la fonction
+                    <code class="language-js">setInterval()</code>.
+                </li>
+                <li>
+                    Créez une fonction lambda qui calcule la somme des éléments d'un tableau en utilisant la méthode
+                    <code class="language-js">reduce()</code>.
+                </li>
+                <li>
+                    Créez une fonction lambda pour demander à l'utilisateur de saisir son prénom en utilisant le
+                    module <code class="language-js">readline</code> de Node.js.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Promises</h3>
+        <p>
+            Une promesse (promise) est un objet qui représente la réussite ou l'échec d'une opération asynchrone.
+        </p>
+        <p>
+            Les promesses sont couramment utilisées en JavaScript pour gérer les <strong>opérations asynchrones</strong>
+            comme les appels réseau, les accès à la base de données ou les interactions avec l'utilisateur.
+        </p>
+        <pre><code class="language-js">const promise = new Promise((resolve, reject) => { // resolve et reject sont des fonctions de rappel
+    setTimeout(() => {
+        const success = Math.random() > 0.5;
+        if (success) {
+            resolve('Success!'); // La promesse est résolue
+        } else {
+            reject('Failure!'); // La promesse est rejetée
+        }
+    }, 1000);
+});
+
+promise.then(result => console.log(result)) // Success!
+       .catch(error => console.error(error)); // Failure!</code></pre>
+    </section>
+
+    <section>
+        <h3>Promises</h3>
+        <p>
+            Les promesses permettent de simplifier la gestion des opérations asynchrones en évitant le syndrome de
+            <strong>l'entrelacement</strong> (<a href="http://callbackhell.com/" target="_blank">callback hell</a>).
+        </p>
+        <p>
+            NodeJS propose dans sa bibliothèque standard des fonctions qui retournent des promesses, comme par exemple
+            <code class="language-js">fs.promises.readFile()</code> pour lire un fichier.
+        </p>
+        <a href="https://nodejs.org/en/learn/manipulating-files/reading-files-with-nodejs" target="_blank">
+            Node.js - Reading files with Node.js
+        </a>
+    </section>
+
+    <section>
+        <h3>Closures</h3>
+        <p>
+            Une fermeture (closure) est une fonction qui capture les variables de son environnement lexical.
+        </p>
+        <p>
+            Les fermetures sont couramment utilisées en JavaScript pour créer des fonctions qui conservent l'état de
+            leur environnement d'exécution.
+        </p>
+        <pre><code class="language-js">function makeCounter() {
+    let count = 0;
+    return () => count++; // ⚠️ Cette fonction retourne la valeur actuelle de count
+}
+
+const counter = makeCounter();
+console.log(counter()); // 0
+console.log(counter()); // 1
+console.log(counter()); // 2</code></pre>
+    </section>
+
+    <section>
+        <h3>Closures</h3>
+        <p>
+            Les fermetures permettent de retrouver des concepts de la programmation orientée objet comme l'encapsulation
+            et l'abstraction :
+        </p>
+        <pre><code class="language-js">function createPerson(name) {
+    return {
+        getName: () => name,
+        setName: (newName) => name = newName
+    };
+}
+
+const person = createPerson('Alice');
+console.log(person.getName()); // Alice
+person.setName('Bob');
+console.log(person.getName()); // Bob</code></pre>
+    </section>
+
+    <section>
+        <h3>Currying</h3>
+        <p>
+            La currification (currying) est une technique de <strong>transformation</strong> d'une fonction qui prend
+            <strong>plusieurs arguments</strong> en une séquence de <strong>fonctions qui prennent un seul argument</strong>.
+        </p>
+        <p>
+            La currification est basée sur le principe de fermeture (closure) et est couramment utilisée en programmation
+            fonctionnelle pour créer des fonctions partielles.
+        </p>
+        <p>
+            On peut représenter la currification d'une fonction <code class="language-js">add(x, y)</code> comme une
+            suite de fonctions <code class="language-js">add(x)(y)</code> :
+        </p>
+        <pre><code class="language-js">function add(x) {
+    return y => x + y;
+}
+
+const add2 = add(2);
+console.log(add2(3)); // 5</code></pre>
+    </section>
+
+    <section>
+        <h3>Currying - Exemple</h3>
+        <p>
+            La currification est utile pour créer des fonctions partielles qui peuvent être réutilisées avec des arguments
+            différents.
+        </p>
+        <p>
+            Dans cet exemple, nous avons une fonction <code class="language-js">log(date, level, message)</code>
+            qui affiche un message de journalisation avec une date, un niveau de log et un message :
+        </p>
+        <pre><code class="language-js">function log(date, level, message) {
+    console.log(`[${date}] [${level}] ${message}`);
+}</code></pre>
+        <p>
+            L'utilisation de cette fonction est <strong>fastidieuse</strong>, car il faut spécifier la date et le
+            niveau de log à chaque appel :
+        </p>
+        <pre><code class="language-js">log(new Date(), 'INFO', 'First log');
+log(new Date(), 'INFO', 'Second log');</code></pre>
+    </section>
+
+    <section>
+        <h3>Currying - Exemple</h3>
+        <p>
+            En utilisant la currification, nous pouvons créer une fonction <code class="language-js">info(message)</code>
+            qui affiche un message de journalisation avec un niveau de log <code class="language-js">INFO</code> :
+        </p>
+        <pre><code class="language-js">const info = log(new Date(), 'INFO');
+info('First log');
+info('Second log');</code></pre>
+        <p>
+            La fonction <code class="language-js">info()</code> est une fonction partielle qui conserve la date et le
+            niveau de log pour chaque appel.
+        </p>
+        <p>
+            Voici comment nous pouvons implémenter la currification de la fonction <code class="language-js">log()</code> :
+        </p>
+        <pre><code class="language-js">function log(date) {
+    return level => message => console.log(`[${date}] [${level}] ${message}`);
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Currying - Exercice</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    En utilisant la fonction précédente, comment créer et utiliser une fonction
+                    <code class="language-js">logNow()</code> ?
+                </li>
+                <li>
+                    Créez une fonction <code class="language-js">add(x, y, z)</code> qui retourne la somme des trois
+                    arguments.
+                </li>
+                <li>
+                    Utilisez la currification pour créer une fonction <code class="language-js">add5(x)</code> qui
+                    ajoute 5 à un nombre.
+                </li>
+                <li>
+                    Utilisez la currification pour créer une fonction <code class="language-js">add10(x)</code> qui
+                    ajoute 10 à un nombre.
+                </li>
+                <li>
+                    Utilisez la currification pour créer une fonction <code class="language-js">add5and10(x)</code> qui
+                    ajoute 5 et 10 à un nombre.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Higher-Order Functions</h3>
+        <p>
+            Les fonctions d'ordre supérieur (higher-order functions) sont des fonctions qui prennent d'autres fonctions
+            en tant qu'arguments ou qui retournent des fonctions (ou les deux en même temps).
+        </p>
+        <p>
+            Par exemple, nous avons vu la fonction <code class="language-js">filter()</code> qui prend une fonction
+            de test en argument et retourne un nouveau tableau contenant les éléments qui passent le test.
+        </p>
+    </section>
+
+    <section>
+        <h3>React</h3>
+        <p>
+            React utilise le concept de fonctions d'ordre supérieur pour créer des <strong>composants réutilisables</strong>.
+        </p>
+        <p>
+            Ces composants sont appelés <strong>High-order components (HOC)</strong>. Ils prennent un composant en
+            argument et retournent un nouveau composant avec des fonctionnalités supplémentaires.
+        </p>
+    </section>
+
+    <section>
+        <h3>Higher-Order Functions - Exercice</h3>
+        <div class="instructions">
+            <ul>
+                <li>
+                    Créer une fonction <code class="language-js">mapToList()</code> prenant en paramètre une fonction
+                    de transformation et un tableau, et retournant un nouveau tableau avec les éléments transformés.
+                </li>
+                <li>
+                    Cette fonction devra reproduire le comportement de la méthode <code class="language-js">map()</code>
+                    de JavaScript, mais en ajoutant une puce devant chaque élément.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h3>Récursivité</h3>
+        <p>
+            La récursivité est une technique de programmation dans laquelle une fonction s'appelle elle-même pour résoudre un problème plus petit.
+        </p>
+        <blockquote>
+            <p>
+                "To understand recursion, you must first understand recursion."
+            </p>
+            <cite>Anonymous</cite>
+        </blockquote>
+    </section>
+
+    <section>
+        <h3>Récursivité VS Itération</h3>
+        <p>
+            La récursivité est couramment utilisée en programmation fonctionnelle pour remplacer les boucles.
+            Cependant, la récursivité ne permet pas d'améliorer les performances, car chaque appel de fonction crée une nouvelle pile d'exécution.
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>Récursivité</h4>
+                <pre><code class="language-javascript">function factorial(n) {
+    if (n === 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}</code></pre>
+            </div>
+            <div class="col">
+                <h4>Itération</h4>
+                <pre><code class="language-javascript">function factorial(n) {
+    let result = 1;
+    for (let i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}</code></pre>
+            </div>
+        </div>
+        <footer>
+            <a href="https://stackoverflow.com/questions/9386375/efficiency-recursion-vs-loop" target="_blank">Stack Overflow - Efficiency: recursion vs. loop</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Récursivité en Haskell</h3>
+        <p>
+            Le langage Haskell est un langage de programmation fonctionnel pur qui repose sur la récursivité pour l'itération.
+            Il ne supporte pas les boucles comme <code>for</code> ou <code>while</code> que l'on retrouve dans les langages impératifs.
+        </p>
+        <pre><code class="language-haskell">factorial :: Integer -> Integer
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
+
+main :: IO ()
+main = do
+    print (factorial 5) -- 120</code></pre>
+    </section>
+
+    <section>
+        <h3>Récursivité sur tableau</h3>
+        <p>
+            La récursivité peut être utilisée pour parcourir un tableau en appelant une fonction récursive sur chaque élément.
+        </p>
+        <pre><code class="language-js">function sum(arr) {
+    if (arr.length === 0) {
+        return 0;
+    } else {
+        return arr[0] + sum(arr.slice(1)); // Head + Tail
+    }
+}</code></pre>
+        <p>
+            En Haskell, cette fonction s'écrit de la manière suivante :
+        </p>
+        <pre><code class="language-haskell">sum :: [Integer] -> Integer
+sum [] = 0
+sum (head:tail) = head + sum tail</code></pre>
+    </section>
+
+    <section>
+        <h3>Récursivité - Exercice</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez une fonction récursive <code class="language-js">fibonacci(n)</code> qui retourne le n-ième
+                    nombre de la suite de Fibonacci.
+                </li>
+                <li>
+                    Créez une fonction récursive <code class="language-js">reverse(str)</code> qui retourne une chaîne
+                    de caractères inversée.
+                </li>
+                <li>
+                    Créez une fonction récursive <code class="language-js">flatten(arr)</code> qui retourne un tableau
+                    à une dimension à partir d'un tableau multidimensionnel.
+                </li>
+                <li>
+                    Créez une fonction récursive <code class="language-js">factorial(n)</code> qui retourne la factorielle
+                    d'un nombre.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+</section>

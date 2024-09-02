@@ -1,0 +1,403 @@
+<section id="logic">
+
+    <section>
+        <h2>Paradigmes Logique</h2>
+    </section>
+
+    <section>
+        <h3>Programmation logique</h3>
+        <p>
+            La programmation logique est un sous domaine de la <strong>programmation déclarative</strong>. Elle est
+            basée sur la logique mathématique et repose sur le concept de <strong>prédicats</strong> et de
+            <strong>règles logiques</strong>.
+        </p>
+        <p>
+            Le langage de programmation le plus connu pour la programmation logique est <strong>Prolog</strong>.
+        </p>
+        <p>
+            Le langage Prolog peut être <strong>comparé au langage SQL</strong> pour les bases de données.
+            Cependant, on ne va pas créer des données avec Prolog, mais plutôt des règles logiques et des relations.
+        </p>
+    </section>
+
+    <section>
+        <h3>Prolog</h3>
+        <p>
+            Prolog est un langage de programmation logique inventé en 1972 par Alain Colmerauer et Philippe Roussel.
+            Il est basé sur la logique du premier ordre et repose sur le concept de <strong>prédicats</strong> (facts)
+            et de <strong>règles logiques</strong> (rules).
+        </p>
+        <p>
+            Prolog est un langage de programmation déclaratif, ce qui signifie que l'on décrit ce que l'on veut obtenir
+            plutôt que comment l'obtenir.
+        </p>
+    </section>
+
+    <section>
+        <h3>Installation</h3>
+        <p>
+            Pour installer Prolog sur votre machine, vous pouvez utiliser le gestionnaire de paquets de votre système
+            d'exploitation.
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>macOS</h4>
+                <pre class="language-bash"><code>brew install gnu-prolog</code></pre>
+            </div>
+            <div class="col">
+                <h4>Windows</h4>
+                <pre class="language-bash"><code>scoop bucket add extras
+scoop install swi-prolog</code></pre>
+            </div>
+        </div>
+        <p>
+            Vous pouvez ensuite exécuter Prolog en tapant la commande <code>prolog</code> dans un terminal ou bien
+            en créant un fichier avec l'extension <code>.pl</code> et en l'exécutant avec la commande suivante :
+        </p>
+        <pre><code class="language-shell">gprolog
+| ?- [hello].</code></pre>
+        <pre><code class="language-shell">swipl -s hello.pl</code></pre>
+        <p>
+            Vous pouvez également utiliser un <a href="https://swish.swi-prolog.org/" target="_blank">interpréteur en ligne</a>
+            pour tester Prolog sans l'installer sur votre machine.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exemple</h3>
+        <p>
+            Voici un exemple de programme Prolog qui définit des faits et des règles pour déterminer si un animal est
+            un mammifère ou un oiseau :
+        </p>
+        <pre><code class="language-prolog">% Facts
+mammal(dog).
+mammal(cat).
+bird(sparrow).
+bird(eagle).
+
+% Rules
+animal(X) :- mammal(X).
+animal(X) :- bird(X).</code></pre>
+        <p>
+            On peut ensuite poser des questions à Prolog pour déterminer si un animal est un mammifère ou un oiseau :
+        </p>
+        <pre><code class="language-prolog">?- animal(dog).
+true.
+
+?- bird(sparrow).
+true.
+
+?- animal(fish).
+false.</code></pre>
+    </section>
+
+    <section>
+        <h3>Termes</h3>
+        <p>
+            En Prolog, les données sont représentées par des <strong>termes</strong>. Un terme peut être un <strong>atome</strong>,
+            un <strong>nombre</strong>, une <strong>variable</strong> ou une <strong>structure</strong>.
+        </p>
+        <ul>
+            <li>
+                Un <strong>atome</strong> est un symbole qui représente une constante.
+                Par exemple : <code>dog</code>, <code>cat</code>, <code>sparrow</code>, <code>eagle</code>.
+                Il doit commencer par une lettre minuscule ou être entouré de guillemets simples.
+            </li>
+            <li>
+                Un <strong>nombre</strong> est un entier ou un nombre à virgule flottante.
+                Par exemple : <code>42</code>, <code>3.14</code>.
+            </li>
+            <li>
+                Une <strong>variable</strong> est un symbole qui commence par une majuscule ou un underscore.
+                Par exemple : <code>X</code>, <code>Y</code>, <code>_Z</code>.
+            </li>
+            <li>
+                Une <strong>structure</strong> est un terme composé d'un <strong>foncteur</strong> et d'un nombre
+                d'arguments.
+                Par exemple : <code>animal(dog)</code>, <code>point(3, 4)</code>.
+            </li>
+        </ul>
+        <p>
+            Il est également possible de manipuler des listes en Prolog (par exemple : <code>[1, 2, 3]</code>) ou
+            encore des chaînes de caractères (par exemple : <code>"hello, world!"</code>).
+        </p>
+    </section>
+
+    <section>
+        <h3>Aucun typage</h3>
+        <p>
+            Contrairement à d'autres langages de programmation, Prolog n'a pas de typage explicite pour les variables.
+            Cela signifie que les variables peuvent contenir n'importe quel type de données sans avoir besoin de les
+            déclarer.
+        </p>
+        <p>
+            Par exemple, la variable <code>X</code> peut contenir un atome, un nombre, une liste ou une structure.
+        </p>
+        <p>
+            Cela permet à Prolog d'être plus flexible et de manipuler des données de manière plus générique.
+        </p>
+    </section>
+
+    <section>
+        <h3>Faits (facts)</h3>
+        <p>
+            Les <strong>faits</strong> sont des déclarations qui sont vraies dans un monde donné. Ils sont utilisés
+            pour décrire des connaissances sur le monde.
+        </p>
+        <p>
+            En Prolog, les faits sont définis en utilisant des prédicats avec des arguments. Par exemple, le fait
+            <code>mammal(dog)</code> signifie que le chien est un mammifère.
+        </p>
+        <p>
+            Voici d'autres exemples de faits en Prolog :
+        </p>
+        <pre><code class="language-prolog">color(red). % red is a color
+mother(marge, bart). % marge is the mother of bart
+love(romeo, juliet). % romeo loves juliet</code></pre>
+        <p>
+            Le caractère <code class="language-prolog">.</code> est utilisé pour terminer un fait ou une règle en Prolog.
+        </p>
+    </section>
+
+    <section>
+        <h3>Règles (rules)</h3>
+        <p>
+            Les <strong>règles</strong> sont des déclarations qui définissent des relations entre les faits. Elles sont
+            utilisées pour déduire de nouvelles informations à partir des faits existants.
+        </p>
+        <p>
+            En Prolog, les règles sont définies en utilisant des prédicats avec des variables. Par exemple, la règle
+            <code>animal(X) :- mammal(X)</code> signifie que si X est un mammifère, alors X est un animal.
+        </p>
+        <p>
+            Voici d'autres exemples de règles en Prolog :
+        </p>
+        <pre><code class="language-prolog">parent(X, Y) :- mother(X, Y). % X is the parent of Y if X is the mother of Y
+grandparent(X, Z) :- parent(X, Y), parent(Y, Z). % X is the grandparent of Z if X is the parent of Y and Y is the parent of Z</code></pre>
+        <p>
+            Dans l'exemple ci-dessus, le symbole <code class="language-prolog">:-</code> est utilisé pour définir une
+            règle en Prolog tandis que la virgule <code class="language-prolog">,</code> est utilisée pour effectuer
+            une conjonction (AND). Le point-virgule <code class="language-prolog">;</code> est utilisé pour effectuer
+            une disjonction (OR).
+        </p>
+    </section>
+
+    <section>
+        <h3>Exercice - Étudiants / Enseignants</h3>
+        <p>
+            Utilisez Prolog pour résoudre le problème suivant :
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Écrire en Prolog les faits suivants :
+                    <ul>
+                        <li>John étudie la programmation.</li>
+                        <li>Tom étudie les mathématiques.</li>
+                        <li>Alice enseigne les mathématiques.</li>
+                        <li>Mary enseigne la programmation.</li>
+                    </ul>
+                </li>
+                <li>
+                    Écrire en Prolog les règles suivantes :
+                    <ul>
+                        <li>Un étudiant est une personne qui étudie une matière.</li>
+                        <li>Un enseignant est une personne qui enseigne une matière.</li>
+                        <li>Un étudiant à un enseignant s'il étudie une matière enseignée par cet enseignant.</li>
+                    </ul>
+                </li>
+                <li>
+                    Poser les questions suivantes à Prolog :
+                    <ul>
+                        <li>Est-ce que John est un étudiant ?</li>
+                        <li>Est-ce que Mary est une étudiante ?</li>
+                        <li>Est-ce que Mary enseigne à John ?</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Unification</h3>
+        <p>
+            L'<strong>unification</strong> est un concept fondamental en Prolog. C'est un mécanisme qui permet de
+            comparer deux termes et de les rendre égaux en instanciant les variables.
+        </p>
+        <p>
+            Par exemple, si on a les termes <code>animal(X)</code> et <code>animal(dog)</code>, on peut les unifier
+            en instanciant la variable <code>X</code> avec <code>dog</code>.
+        </p>
+        <p>
+            L'unification est utilisée pour résoudre les requêtes en Prolog en trouvant les valeurs des variables
+            qui rendent les prédicats vrais.
+        </p>
+        <p>
+            Voici un exemple d'unification en Prolog :
+        </p>
+        <pre><code class="language-prolog">?- animal(X) = animal(dog).
+X = dog</code></pre>
+        <footer>
+            <a href="#" class="warning" style="font-size: 0.7em">
+                L'unification est totalement différente de l'affectation en programmation impérative.
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Unification - Exemples</h3>
+        <p>
+            Voici quelques exemples d'unification en Prolog :
+        </p>
+        <pre><code class="language-prolog">?- 1 = 1. % yes
+?- 1 + 1 = 2. % no (ici, Prolog ne fait pas d'évaluation arithmétique et compare en réalité '+'(1, 1) avec 2)
+?- X = 42 + 3. % X = 42+3</code></pre>
+        <p>
+            En utilisant l'unification et les variables avec des règles, on peut déduire de nouvelles informations à
+            partir des faits :
+        </p>
+        <pre><code class="language-prolog">?- parent(X, bart). % X = marge</code></pre>
+        <p>
+            L'instruction précédente permet de déduire que Marge est la mère de Bart, mais il serait possible de
+            déduire également que Homer est le père de Bart en ajoutant un fait
+            <code class="language-prolog">father(homer, bart)</code> et en appuyant sur
+            <code class="language-prolog">;</code> pour demander à Prolog de <strong>chercher une autre solution</strong>.
+            Cette fonctionnalité est appelée <strong>backtracking</strong>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Unification - Exercice</h3>
+        <p>
+            À partir des exercices précédents, essayez de poser des questions à Prolog pour déduire de nouvelles
+            informations en utilisant l'unification.
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Déduire qui enseigne la programmation.
+                </li>
+                <li>
+                    Déduire qui étudie les mathématiques.
+                </li>
+                <li>
+                    Déduire quels sont les enseignants de John.
+                </li>
+                <li>
+                    Déduire quels sont les étudiants d'Alice.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Listes</h3>
+        <p>
+            Les <strong>listes</strong> sont un concept fondamental en Prolog. Elles sont utilisées pour représenter
+            des ensembles d'éléments ordonnés.
+        </p>
+        <p>
+            Une liste vide est représentée par le symbole <code>[]</code>. Une liste non vide est représentée par
+            un <strong>terme composé</strong> avec un <strong>foncteur</strong> <code>.</code> et deux arguments :
+            la <strong>tête</strong> de la liste et la <strong>queue</strong> de la liste.
+        </p>
+        <p>
+            Par exemple, la liste <code>[1, 2, 3]</code> est représentée en Prolog par <code>[1, [2, [3, []]]]</code>.
+        </p>
+        <p>
+            Il existe en Prolog des predicats prédéfinis pour manipuler les listes, comme <code>member</code>,
+            <code>append</code>, <code>reverse</code>, etc.
+        </p>
+    </section>
+
+    <section>
+        <h3>Listes - Exemples</h3>
+        <p>
+            Voici quelques exemples de manipulation de listes en Prolog :
+        </p>
+        <pre><code class="language-prolog">?- member(2, [1, 2, 3]). % yes
+?- append([1, 2], [3, 4], X). % X = [1, 2, 3, 4]
+?- reverse([1, 2, 3], X). % X = [3, 2, 1]</code></pre>
+        <p>
+            L'opérateur <code>|</code> peut être utilisé pour décomposer une liste en tête et queue :
+        </p>
+        <pre><code class="language-prolog">?- [Head | Tail] = [1, 2, 3]. % Head = 1, Tail = [2, 3]</code></pre>
+        <p>
+            Cela permet de manipuler les éléments d'une liste de manière récursive en Prolog :
+        </p>
+        <pre><code class="language-prolog">sum([], 0). % sum of an empty list is 0
+sum([Head | Tail], Total) :- sum(Tail, Sum), Total is Head + Sum.</code></pre>
+        <p>
+            Le mot clé <code class="language-prolog">is</code> est utilisé pour évaluer une expression arithmétique en
+            Prolog (car le signe <code class="language-prolog">=</code> est déjà utilisé pour l'unification).
+        </p>
+    </section>
+
+    <section>
+        <h3>Debugger avec Trace</h3>
+        <p>
+            Prolog dispose d'un outil de <strong>debugging</strong> appelé <strong>trace</strong> qui permet de suivre
+            l'exécution d'un programme pas à pas.
+        </p>
+        <p>
+            Pour activer le mode trace, il suffit de taper la commande <code>trace.</code> dans l'interpréteur Prolog
+            puis d'exécuter une requête. Prolog affichera alors chaque étape de l'exécution du programme.
+        </p>
+        <div class="container">
+            <div class="col">
+                <p>
+                    Dans l'exemple ci-contre, <code class="language-prolog">_29</code>,
+                    <code class="language-prolog">_98</code>... sont des variables anonymes qui sont utilisées pour
+                    représenter des variables temporaires.
+                </p>
+                <p>
+                    Les chiffres à gauche de chaque ligne représentent le numéro de la procédure et la profondeur de
+                    l'appel récursif.
+                </p>
+            </div>
+            <div class="col">
+                <pre><code class="language-prolog">| ?- sum([1,2,3], X).
+1    1  Call: sum([1,2,3],_29) ?
+2    2  Call: sum([2,3],_98) ?
+3    3  Call: sum([3],_122) ?
+4    4  Call: sum([],_146) ?
+4    4  Exit: sum([],0) ?
+5    4  Call: _174 is 3+0 ?
+5    4  Exit: 3 is 3+0 ?
+3    3  Exit: sum([3],3) ?
+6    3  Call: _203 is 2+3 ?
+6    3  Exit: 5 is 2+3 ?
+2    2  Exit: sum([2,3],5) ?
+7    2  Call: _29 is 1+5 ?
+7    2  Exit: 6 is 1+5 ?
+1    1  Exit: sum([1,2,3],6) ?</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Listes - exercice</h3>
+        <p>
+            Utilisez Prolog pour résoudre le problème suivant :
+        </p>
+        <p>
+            Une rue est composée de 3 maisons, chacune ayant une couleur différente (rouge, vert ou bleu) et habitée par une personne
+            de nationalité différente (Espagnol, Italien, Français).
+        </p>
+        <ul>
+            <li>L'Espagnol habite à droite de la maison rouge.</li>
+            <li>L'Italien habite la seconde maison.</li>
+            <li>Le Français habite dans la maison bleue.</li>
+        </ul>
+        <p>
+            Qui habite dans la maison verte ?
+            Qui habite dans la première maison ?
+            ...
+        </p>
+    </section>
+
+    <section>
+        <h3>Exercice - </h3>
+    </section>
+
+</section>

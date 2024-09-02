@@ -1,0 +1,36 @@
+.reveal {
+
+  pre[class*="language-"] {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.6em;
+    padding: 0.5em;
+
+    code {
+      padding: 0;
+    }
+  }
+
+  section > footer {
+    margin-top: 1rem;
+  }
+
+  .paradigm {
+    padding: 1rem;
+    border-radius: 0.25rem;
+
+    &.paradigm--imperative {
+      background-color: #f8d7da;
+    }
+
+    &.paradigm--declarative {
+        background-color: #d4edda;
+    }
+
+    > .paradigm {
+      margin-bottom: 1rem;
+      background-color: aliceblue;
+    }
+  }
+
+}
