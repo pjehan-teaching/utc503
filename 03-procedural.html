@@ -190,4 +190,66 @@ do {
         </div>
     </section>
 
+    <section>
+        <h3>Tableaux</h3>
+        <p>
+            Les tableaux permettent de stocker plusieurs valeurs dans une seule variable.
+        </p>
+        <p>
+            En C, les tableaux sont des collections de valeurs de même type qui sont stockées de manière contiguë en mémoire.
+        </p>
+        <pre><code class="language-c">int numbers[5] = {1, 2, 3, 4, 5};</code></pre>
+        <p>
+            Il est possible d'accéder à un élément d'un tableau en utilisant son indice :
+        </p>
+        <pre><code class="language-c">printf("%d\n", numbers[0]);</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercice - Somme de 2 nombres</h3>
+        <p>
+            À partir d'un tableau de nombres et d'un nombre cible, écrire un algorithme qui détermine si deux nombres du tableau
+            peuvent être additionnés pour obtenir le nombre cible et retourner les indices de ces deux nombres.
+        </p>
+        <p>
+            Par exemple, si le tableau contient les valeurs <code>2, 7, 11, 15</code> et que le nombre cible est <code>9</code>,
+            alors l'algorithme doit retourner les indices <code>0</code> et <code>1</code> car <code>2 + 7 = 9</code>.
+        </p>
+        <p>
+            Autre exemple, si le tableau contient les valeurs <code>3, 2, 4</code> et que le nombre cible est <code>6</code>,
+            alors l'algorithme doit retourner les indices <code>1</code> et <code>2</code> car <code>2 + 4 = 6</code>.
+        </p>
+    </section>
+
+    <section>
+        <h3>Exercice - Somme de 2 nombres</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créer un tableau de nombres et un nombre cible.
+                </li>
+                <li>
+                    Parcourir le tableau et pour chaque élément, vérifier si le complément (nombre cible - élément) est présent dans le tableau.
+                </li>
+                <li>
+                    Si c'est le cas, retourner les indices des deux éléments.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - Somme de 2 nombres (avancée)</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Demandez à l'utilisateur de saisir les valeurs du tableau et le nombre cible.
+                </li>
+                <li>
+                    Essayer d'optimiser l'algorithme pour qu'il soit le plus rapide possible.
+                </li>
+            </ol>
+        </div>
+    </section>
+
 </section>
