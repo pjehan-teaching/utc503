@@ -57,6 +57,11 @@ scoop install openjdk</code></pre>
         </p>
         <pre><code class="language-shell">javac HelloWorld.java</code></pre>
         <pre><code class="language-shell">java HelloWorld</code></pre>
+        <p>
+            Sur VSCode, vous pouvez également
+            <a href="https://code.visualstudio.com/docs/java/java-tutorial#_creating-a-source-code-file" target="_blank">créer un nouveau projet</a>
+            Java en utilisant la palette de commande (Ctrl + Shift + P) et en tapant "Java: Create Java Project".
+        </p>
     </section>
 
     <section>
@@ -138,21 +143,6 @@ scoop install openjdk</code></pre>
     </section>
 
     <section>
-        <h3>Héritage</h3>
-        <p>
-            L'<strong>héritage</strong> est un mécanisme de la programmation orientée objet qui permet à une classe
-            (appelée <strong>classe fille</strong>) d'hériter des attributs et des méthodes d'une autre classe
-            (appelée <strong>classe mère</strong>).
-        </p>
-        <p>
-            En Java, l'héritage est réalisé à l'aide du mot-clé <code class="language-java">extends</code> :
-        </p>
-        <pre><code class="language-java">public class Circle extends Shape {
-    // Attributs et méthodes de la classe Shape
-}</code></pre>
-    </section>
-
-    <section>
         <h3>Encapsulation</h3>
         <p>
             L'<strong>encapsulation</strong> est un principe de la programmation orientée objet qui consiste à regrouper
@@ -173,6 +163,87 @@ scoop install openjdk</code></pre>
         this.radius = radius;
     }
 }</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercice - Librairie Video</h3>
+        <p>
+            Pour la suite de ce cours, nous allons <strong>créer une librairie</strong> permettant d'afficher sur une
+            page web un <strong>lecteur vidéo</strong>.
+        </p>
+        <p>
+            Notre librairie permettra ainsi <strong>à partir de l'URL</strong> d'une vidéo de générer le code HTML
+            nécessaire pour afficher le lecteur vidéo.
+        </p>
+        <div class="container">
+            <div class="col" style="flex: 2">
+                <div class="instructions">
+                    <ol>
+                        <li>
+                            Créez une classe <code>Video</code>.
+                        </li>
+                        <li>
+                            Ajoutez avec un attribut <code>url</code>.
+                        </li>
+                        <li>
+                            Ajoutez des méthodes pour <code>get</code> et <code>set</code> l'attribut <code>url</code>.
+                        </li>
+                        <li>
+                            Modifiez le constructeur pour obliger à initialiser l'attribut <code>url</code>.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col">
+                <a href="assets/images/oop/step1.png" target="_blank">
+                    <img src="assets/images/oop/step1.png" alt="Video class diagram - step 1">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Héritage</h3>
+        <p>
+            L'<strong>héritage</strong> est un mécanisme de la programmation orientée objet qui permet à une classe
+            (appelée <strong>classe fille</strong>) d'hériter des attributs et des méthodes d'une autre classe
+            (appelée <strong>classe mère</strong>).
+        </p>
+        <p>
+            En Java, l'héritage est réalisé à l'aide du mot-clé <code class="language-java">extends</code> :
+        </p>
+        <pre><code class="language-java">public class Circle extends Shape {
+    // Attributs et méthodes de la classe Shape
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercice - Librairie Video</h3>
+        <div class="container">
+            <div class="col" style="flex: 2">
+                <div class="instructions">
+                    <ol>
+                        <li>
+                            Créez deux classes <code>YouTube</code> et <code>Vimeo</code> qui héritent de la classe <code>Video</code>.
+                        </li>
+                        <li>
+                            Ajoutez une méthode <code>getCode()</code> à la classe <code>YouTube</code>.
+                        </li>
+                        <li>
+                            Ajoutez une propriété <code>color</code> avec ses méthodes <code>get</code> et <code>set</code> à la classe <code>Vimeo</code>.
+                        </li>
+                        <li>
+                            Ajoutez une méthode <code>getHTML()</code> aux classes <code>YouTube</code> et <code>Vimeo</code>.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col">
+                <a href="assets/images/oop/step2.png" target="_blank">
+                    <img src="assets/images/oop/step2.png" alt="Video class diagram - step 2">
+                </a>
+            </div>
+        </div>
     </section>
 
     <section>
@@ -200,6 +271,29 @@ scoop install openjdk</code></pre>
             Cette classe ne pourra pas être instanciée, mais servira de modèle pour les classes filles qui devront
             implémenter la méthode <code class="language-java">area()</code>.
         </p>
+    </section>
+
+    <section>
+        <h3>Exercice - Librairie Video</h3>
+        <div class="container">
+            <div class="col" style="flex: 2">
+                <div class="instructions">
+                    <ol>
+                        <li>
+                            Modifiez la classe <code>Video</code> pour en faire une classe abstraite.
+                        </li>
+                        <li>
+                            Ajoutez une méthode abstraite <code>getHTML()</code> à la classe <code>Video</code>.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col">
+                <a href="assets/images/oop/step3.png" target="_blank">
+                    <img src="assets/images/oop/step3.png" alt="Video class diagram - step 3">
+                </a>
+            </div>
+        </div>
     </section>
 
     <section>
@@ -237,6 +331,47 @@ shapes[2] = new Triangle(3, 4, 5);
 for (Shape shape : shapes) {
     System.out.println(shape.area());
 }</code></pre>
+    </section>
+
+    <section>
+        <h3>Exercice - Librairie Video</h3>
+        <div class="container">
+            <div class="col" style="flex: 2">
+                <div class="instructions">
+                    <ol>
+                        <li>
+                            Créez une interface <code>Media</code> avec une méthode <code>getUrl()</code>.
+                        </li>
+                        <li>
+                            Modifiez la classe <code>Video</code> pour qu'elle implémente l'interface <code>Media</code>.
+                        </li>
+                        <li>
+                            Créez une classe <code>Player</code> qui prend en paramètre un objet <code>Media</code>
+                            avec une méthode <code>play()</code> qui permet d'exécuter le média.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col">
+                <a href="assets/images/oop/step4.png" target="_blank">
+                    <img src="assets/images/oop/step4.png" alt="Video class diagram - step 4">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - Librairie Video</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créer une nouvelle classe DailyMotion.
+                </li>
+                <li>
+                    Créer une classe <code>Audio</code> qui soit compatible avec la classe <code>Player</code>.
+                </li>
+            </ol>
+        </div>
     </section>
 
     <section>
@@ -358,7 +493,7 @@ for (String item : list) {
     <section>
         <h3>Introspection en Java</h3>
         <p>
-            En Java, la réflexion est réalisée à l'aide de la classe <code>Class</code> qui permet d'obtenir des informations
+            En Java, l'introspection est réalisée à l'aide de la classe <code>Class</code> qui permet d'obtenir des informations
             sur une classe à l'exécution :
         </p>
         <pre><code class="language-java">public class ReflectionExample {
@@ -375,7 +510,7 @@ for (String item : list) {
     <section>
         <h3>Intercession en Java</h3>
         <p>
-            En Java, la réflexion permet également d'appeler des méthodes et de modifier des attributs d'un objet à l'exécution :
+            En Java, l'intercession permet d'appeler des méthodes et de modifier des attributs d'un objet à l'exécution :
         </p>
         <pre><code class="language-java">public class ReflectionExample {
     public static void main(String[] args) throws Exception {
@@ -418,18 +553,22 @@ for (String item : list) {
         <p>
             Utilisez le design pattern Adapter afin de contourner l'absence de duck typing en Java.
         </p>
-        <p>
-            Créez une interface <code>Duck</code> avec une méthode <code>quack()</code>.
-        </p>
-        <p>
-            Créez une classe <code>MallardDuck</code> 🦆 qui implémente l'interface <code>Duck</code>.
-        </p>
-        <p>
-            Créez une classe <code>Turkey</code> 🦃 avec une méthode <code>gobble()</code>.
-        </p>
-        <p>
-            Créez une classe <code>TurkeyAdapter</code> qui implémente l'interface <code>Duck</code> et qui utilise un objet <code>Turkey</code> pour adapter les méthodes <code>quack()</code> et <code>gobble()</code>.
-        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez une interface <code>Duck</code> avec une méthode <code>quack()</code>.
+                </li>
+                <li>
+                    Créez une classe <code>MallardDuck</code> 🦆 qui implémente l'interface <code>Duck</code>.
+                </li>
+                <li>
+                    Créez une classe <code>Turkey</code> 🦃 avec une méthode <code>gobble()</code>.
+                </li>
+                <li>
+                    Créez une classe <code>TurkeyAdapter</code> qui implémente l'interface <code>Duck</code> et qui utilise un objet <code>Turkey</code> pour adapter les méthodes <code>quack()</code> et <code>gobble()</code>.
+                </li>
+            </ol>
+        </div>
     </section>
 
     <section>
@@ -437,19 +576,42 @@ for (String item : list) {
         <p>
             Utilisez le design pattern Observer pour créer un système de notifications.
         </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez une interface <code>Observer</code> avec une méthode <code>update()</code>.
+                </li>
+                <li>
+                    Créez une interface <code>Subject</code> avec des méthodes pour ajouter, supprimer et notifier les observateurs.
+                </li>
+                <li>
+                    Créez une classe <code>NotificationSystem</code> qui implémente l'interface <code>Subject</code>.
+                </li>
+                <li>
+                    Créez une classe <code>Notification</code> qui implémente l'interface <code>Observer</code>.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice avancé - Pattern Composite</h3>
         <p>
-            Créez une interface <code>Observer</code> avec une méthode <code>update()</code>.
+            Utilisez le design pattern Composite pour créer un système de gestion de fichiers / dossiers.
         </p>
-        <p>
-            Créez une interface <code>Subject</code> avec des méthodes pour ajouter, supprimer et notifier les observateurs.
-        </p>
-        <p>
-            Créez une classe <code>NotificationSystem</code> qui implémente l'interface <code>Subject</code>.
-        </p>
-        <p>
-            Créez une classe <code>Notification</code> qui implémente l'interface <code>Observer</code>.
-        </p>
-        ...
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez une interface <code>FileComponent</code> avec des méthodes pour afficher le nom et la taille d'un fichier ou d'un dossier.
+                </li>
+                <li>
+                    Créez une classe <code>File</code> qui implémente l'interface <code>FileComponent</code>.
+                </li>
+                <li>
+                    Créez une classe <code>Folder</code> qui implémente l'interface <code>FileComponent</code> et qui contient une liste de fichiers et de dossiers.
+                </li>
+            </ol>
+        </div>
     </section>
 
 </section>
