@@ -206,6 +206,48 @@ do {
     </section>
 
     <section>
+        <h3>Tableaux dynamiques</h3>
+        <p>
+            En C, les tableaux sont de taille fixe, ce qui signifie qu'il est nécessaire de définir leur taille à la compilation.
+        </p>
+        <p>
+            Pour pallier à ce problème, il est possible d'utiliser des pointeurs pour allouer dynamiquement de la mémoire :
+        </p>
+        <pre><code class="language-c">int *numbers;
+int size;
+printf("Quelle taille pour le tableau ? ");
+scanf("%d", &size);
+numbers = (int *)malloc(size * sizeof(int));</code></pre>
+        <p>
+            La fonction <code>malloc()</code> permet d'allouer de la mémoire pour un tableau de <code>size</code> entiers.
+        </p>
+        <p>
+            Il est important de libérer la mémoire allouée à l'aide de la fonction <code>free()</code> pour éviter les fuites de mémoire :
+        </p>
+        <pre><code class="language-c">free(numbers);</code></pre>
+    </section>
+
+    <section>
+        <h3>Fonctions</h3>
+        <p>
+            Les fonctions permettent de regrouper des instructions pour les réutiliser plus facilement.
+        </p>
+        <p>
+            En C, une fonction est définie par son type de retour, son nom et ses paramètres :
+        </p>
+        <pre><code class="language-c">int add(int a, int b) {
+    return a + b;
+}</code></pre>
+        <p>
+            Il est possible de déclarer une fonction avant de l'utiliser pour éviter les erreurs de compilation :
+        </p>
+        <pre><code class="language-c">int add(int a, int b);</code></pre>
+        <p>
+            On appelle cela un <strong>prototype de fonction</strong>.
+        </p>
+    </section>
+
+    <section>
         <h3>Exercice - Somme de 2 nombres</h3>
         <p>
             À partir d'un tableau de nombres et d'un nombre cible, écrire un algorithme qui détermine si deux nombres du tableau
@@ -229,10 +271,10 @@ do {
                     Créer un tableau de nombres et un nombre cible.
                 </li>
                 <li>
-                    Parcourir le tableau et pour chaque élément, vérifier si le complément (nombre cible - élément) est présent dans le tableau.
+                    Parcourir le tableau et essayez de trouver deux éléments qui peuvent être additionnés pour obtenir le nombre cible.
                 </li>
                 <li>
-                    Si c'est le cas, retourner les indices des deux éléments.
+                    Si c'est le cas, afficher les indices des deux éléments.
                 </li>
             </ol>
         </div>
