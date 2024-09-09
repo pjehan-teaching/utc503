@@ -167,6 +167,39 @@ console.log(arr); // [1, 2, 3]</code></pre>
     </section>
 
     <section>
+        <h3>Exercice</h3>
+        <p>
+            Parmi les fonctions suivantes, lesquelles sont pures ?
+        </p>
+        <ol>
+            <li>
+                <pre><code class="language-js">function add(x, y) { return x + y; }</code></pre>
+            </li>
+            <li>
+                <pre><code class="language-js">function random() { return Math.random(); }</code></pre>
+            </li>
+            <li>
+                <pre><code class="language-js">function greet(name) { return 'Hello, ' + name; }</code></pre>
+            </li>
+            <li>
+                <pre><code class="language-js">function square(x) { return x * x; }</code></pre>
+            </li>
+            <li>
+                <pre><code class="language-js">function now() { return new Date(); }</code></pre>
+            </li>
+            <li>
+                <pre><code class="language-js">function display(message) { console.log(message); }</code></pre>
+            </li>
+            <li>
+                <pre><code class="language-js">function sum(arr) { return arr.reduce((acc, x) => acc + x, 0); }</code></pre>
+            </li>
+            <li>
+                <pre><code class="language-js">function uppercase(user) { user.lastname = user.lastname.toUpperCase(); }</code></pre>
+            </li>
+        </ol>
+    </section>
+
+    <section>
         <h3>React</h3>
         <p>
             React est une bibliothèque JavaScript open-source pour la <strong>création d'interfaces utilisateur</strong>
@@ -212,11 +245,33 @@ const filtered = arr.filter(x => x > 1);</code></pre>
         <p>
             Les fonctions fléchées sont plus courtes et plus lisibles que les fonctions anonymes traditionnelles.
         </p>
+    </section>
+
+    <section>
+        <h3>Expressions lambda</h3>
         <p>
             Hormis une différence de syntaxe, les
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">fonctions fléchées</a>
             ont un comportement légèrement différent en ce qui concerne le mot-clé <code class="language-js">this</code>.
         </p>
+        <pre><code class="language-js">const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    fullName: function() {
+        let fn = function() {
+            console.log(this); // this is the global object
+            console.log(this.firstName + ' ' + this.lastName); // undefined undefined
+        }
+        fn();
+        let lambda = () => {
+            console.log(this); // this is the person object
+            console.log(this.firstName + ' ' + this.lastName); // John Doe
+        };
+        lambda();
+    }
+}
+
+person.fullName();</code></pre>
     </section>
 
     <section>
