@@ -445,7 +445,8 @@ log(new Date(), 'INFO', 'Second log');</code></pre>
             En utilisant la currification, nous pouvons créer une fonction <code class="language-js">info(message)</code>
             qui affiche un message de journalisation avec un niveau de log <code class="language-js">INFO</code> :
         </p>
-        <pre><code class="language-js">const info = log(new Date(), 'INFO');
+        <pre><code class="language-js">const logToday = log(new Date());
+const info = logToday('INFO');
 info('First log');
 info('Second log');</code></pre>
         <p>
@@ -466,7 +467,8 @@ info('Second log');</code></pre>
             <ol>
                 <li>
                     En utilisant la fonction précédente, comment créer et utiliser une fonction
-                    <code class="language-js">logNow()</code> ?
+                    <code class="language-js">errorToday(message)</code> qui affiche un message de journalisation avec un
+                    niveau de log <code class="language-js">ERROR</code> ?
                 </li>
                 <li>
                     Créez une fonction <code class="language-js">add(x, y, z)</code> qui retourne la somme des trois
@@ -630,6 +632,42 @@ sum (head:tail) = head + sum tail</code></pre>
                 </li>
             </ol>
         </div>
+    </section>
+
+    <section>
+        <h3>Exercice - TicTacToe</h3>
+        <p>
+            Reproduire le jeu du Morpion (Tic-Tac-Toe) que vous avez réalisé en programmation orientée objet pour le
+            reproduire en utilisant la programmation fonctionnelle.
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Utilisez des fonctions pures pour gérer l'état du jeu.
+                </li>
+                <li>
+                    Utilisez des expressions lambda pour effectuer des traitements sur les tableaux.
+                </li>
+                <li>
+                    Utilisez des fermetures (closures) pour encapsuler les variables de l'environnement.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Exercice - TicTacToe (Bonus)</h3>
+        <p>
+            Proposez une version améliorée du jeu du Morpion (Tic-Tac-Toe) en ajoutant la possibilité de jouer
+            <strong>contre l'ordinateur</strong>.
+        </p>
+        <p>
+            Pour cela, vous pouvez utiliser l'algorithme <strong>Minimax</strong> et la récursivité pour que
+            l'ordinateur choisisse le meilleur coup à jouer.
+        </p>
+        <footer>
+            <a href="https://fr.wikipedia.org/wiki/Algorithme_minimax" class="info" target="_blank">Wikipédia - Algorithme minimax</a>
+        </footer>
     </section>
 
 </section>
