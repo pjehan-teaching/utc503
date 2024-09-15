@@ -319,6 +319,111 @@ person.fullName();</code></pre>
     </section>
 
     <section>
+        <h3>Récursivité</h3>
+        <p>
+            La récursivité est une technique de programmation dans laquelle une fonction s'appelle elle-même pour résoudre un problème plus petit.
+        </p>
+        <blockquote>
+            <p>
+                "To understand recursion, you must first understand recursion."
+            </p>
+            <cite>Anonymous</cite>
+        </blockquote>
+    </section>
+
+    <section>
+        <h3>Récursivité VS Itération</h3>
+        <p>
+            La récursivité est couramment utilisée en programmation fonctionnelle pour remplacer les boucles.
+            Cependant, la récursivité ne permet pas d'améliorer les performances, car chaque appel de fonction crée une nouvelle pile d'exécution.
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>Récursivité</h4>
+                <pre><code class="language-javascript">function factorial(n) {
+    if (n === 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}</code></pre>
+            </div>
+            <div class="col">
+                <h4>Itération</h4>
+                <pre><code class="language-javascript">function factorial(n) {
+    let result = 1;
+    for (let i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}</code></pre>
+            </div>
+        </div>
+        <footer>
+            <a href="https://stackoverflow.com/questions/9386375/efficiency-recursion-vs-loop" target="_blank">Stack Overflow - Efficiency: recursion vs. loop</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Récursivité en Haskell</h3>
+        <p>
+            Le langage Haskell est un langage de programmation fonctionnel pur qui repose sur la récursivité pour l'itération.
+            Il ne supporte pas les boucles comme <code>for</code> ou <code>while</code> que l'on retrouve dans les langages impératifs.
+        </p>
+        <pre><code class="language-haskell">factorial :: Integer -> Integer
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
+
+main :: IO ()
+main = do
+    print (factorial 5) -- 120</code></pre>
+    </section>
+
+    <section>
+        <h3>Récursivité sur tableau</h3>
+        <p>
+            La récursivité peut être utilisée pour parcourir un tableau en appelant une fonction récursive sur chaque élément.
+        </p>
+        <pre><code class="language-js">function sum(arr) {
+    if (arr.length === 0) {
+        return 0;
+    } else {
+        return arr[0] + sum(arr.slice(1)); // Head + Tail
+    }
+}</code></pre>
+        <p>
+            En Haskell, cette fonction s'écrit de la manière suivante :
+        </p>
+        <pre><code class="language-haskell">sum :: [Integer] -> Integer
+sum [] = 0
+sum (head:tail) = head + sum tail</code></pre>
+    </section>
+
+    <section>
+        <h3>Récursivité - Exercice</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez une fonction récursive <code class="language-js">fibonacci(n)</code> qui retourne le n-ième
+                    nombre de la suite de Fibonacci.
+                </li>
+                <li>
+                    Créez une fonction récursive <code class="language-js">reverse(str)</code> qui retourne une chaîne
+                    de caractères inversée.
+                </li>
+                <li>
+                    Créez une fonction récursive <code class="language-js">flatten(arr)</code> qui retourne un tableau
+                    à une dimension à partir d'un tableau multidimensionnel.
+                </li>
+                <li>
+                    Créez une fonction récursive <code class="language-js">factorial(n)</code> qui retourne la factorielle
+                    d'un nombre.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
         <h3>Promises</h3>
         <p>
             Une promesse (promise) est un objet qui représente la réussite ou l'échec d'une opération asynchrone.
@@ -394,6 +499,70 @@ const person = createPerson('Alice');
 console.log(person.getName()); // Alice
 person.setName('Bob');
 console.log(person.getName()); // Bob</code></pre>
+    </section>
+
+    <section>
+        <h3>Closure - Asynchronisme</h3>
+        <p>
+            Les fermetures sont particulièrement utiles pour gérer l'asynchronisme en JavaScript.
+        </p>
+        <pre><code class="language-js">function fetchData(url) {
+    let data = null;
+    fetch(url)
+        .then(response => response.json())
+        .then(json => data = json);
+    return data;
+} // Cette fonction retourne toujours null
+
+const data = fetchData('https://api.example.com/data');
+console.log(data); // null</code></pre>
+        <p>
+            Dans cet exemple, la fonction <code class="language-js">fetchData()</code> retourne toujours <code>null</code>
+            car la requête <code>fetch()</code> est asynchrone et la variable <code>data</code> n'est pas encore définie
+            au moment du retour de la fonction.
+        </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Modifiez la fonction <code class="language-js">fetchData()</code> pour qu'elle prenne en paramètre
+                    une fonction de rappel (callback) qui sera appelée lorsque les données seront disponibles.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h3>Closure - Exercice</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Créez une fonction <code class="language-js">createCharacter(name, health)</code> qui retourne un
+                    personnage avec un nom et une santé.
+                </li>
+                <li>
+                    Créez une fonction <code class="language-js">getName()</code> qui retourne le nom du personnage.
+                </li>
+                <li>
+                    Créez une fonction <code class="language-js">attack(character, damage)</code> qui réduit la santé
+                    du personnage de la valeur du dommage.
+                </li>
+                <li>
+                    Créez une fonction <code class="language-js">heal(health)</code> qui augmente la santé
+                    du personnage de la valeur de la guérison.
+                </li>
+                <li>
+                    Créez une fonction <code class="language-js">isAlive()</code> qui retourne <code>true</code>
+                    si la santé du personnage est supérieure à zéro.
+                </li>
+                <li>
+                    Créer une fonction <code class="language-js">doSomething()</code> qui effectue une action aléatoire
+                    (attaque ou guérison) pendant un combat.
+                </li>
+                <li>
+                    Créez une fonction <code class="language-js">fight()</code> qui simule un combat entre deux personnages.
+                </li>
+            </ol>
+        </div>
     </section>
 
     <section>
@@ -514,7 +683,7 @@ info('Second log');</code></pre>
     </section>
 
     <section>
-        <h3>Higher-Order Functions - Exercice</h3>
+        <h3>Exercice - mapToList</h3>
         <div class="instructions">
             <ul>
                 <li>
@@ -530,108 +699,29 @@ info('Second log');</code></pre>
     </section>
 
     <section>
-        <h3>Récursivité</h3>
+        <h3>Exercice - Mémoization</h3>
         <p>
-            La récursivité est une technique de programmation dans laquelle une fonction s'appelle elle-même pour résoudre un problème plus petit.
+            La mémoïsation (memoization) est une technique de programmation qui consiste à stocker le résultat d'une
+            fonction pour éviter de le recalculer si les mêmes arguments sont passés à nouveau.
         </p>
-        <blockquote>
-            <p>
-                "To understand recursion, you must first understand recursion."
-            </p>
-            <cite>Anonymous</cite>
-        </blockquote>
-    </section>
-
-    <section>
-        <h3>Récursivité VS Itération</h3>
-        <p>
-            La récursivité est couramment utilisée en programmation fonctionnelle pour remplacer les boucles.
-            Cependant, la récursivité ne permet pas d'améliorer les performances, car chaque appel de fonction crée une nouvelle pile d'exécution.
-        </p>
-        <div class="container">
-            <div class="col">
-                <h4>Récursivité</h4>
-                <pre><code class="language-javascript">function factorial(n) {
-    if (n === 0) {
-        return 1;
-    } else {
-        return n * factorial(n - 1);
-    }
-}</code></pre>
-            </div>
-            <div class="col">
-                <h4>Itération</h4>
-                <pre><code class="language-javascript">function factorial(n) {
-    let result = 1;
-    for (let i = 1; i <= n; i++) {
-        result *= i;
-    }
-    return result;
-}</code></pre>
-            </div>
-        </div>
-        <footer>
-            <a href="https://stackoverflow.com/questions/9386375/efficiency-recursion-vs-loop" target="_blank">Stack Overflow - Efficiency: recursion vs. loop</a>
-        </footer>
-    </section>
-
-    <section>
-        <h3>Récursivité en Haskell</h3>
-        <p>
-            Le langage Haskell est un langage de programmation fonctionnel pur qui repose sur la récursivité pour l'itération.
-            Il ne supporte pas les boucles comme <code>for</code> ou <code>while</code> que l'on retrouve dans les langages impératifs.
-        </p>
-        <pre><code class="language-haskell">factorial :: Integer -> Integer
-factorial 0 = 1
-factorial n = n * factorial (n - 1)
-
-main :: IO ()
-main = do
-    print (factorial 5) -- 120</code></pre>
-    </section>
-
-    <section>
-        <h3>Récursivité sur tableau</h3>
-        <p>
-            La récursivité peut être utilisée pour parcourir un tableau en appelant une fonction récursive sur chaque élément.
-        </p>
-        <pre><code class="language-js">function sum(arr) {
-    if (arr.length === 0) {
-        return 0;
-    } else {
-        return arr[0] + sum(arr.slice(1)); // Head + Tail
-    }
-}</code></pre>
-        <p>
-            En Haskell, cette fonction s'écrit de la manière suivante :
-        </p>
-        <pre><code class="language-haskell">sum :: [Integer] -> Integer
-sum [] = 0
-sum (head:tail) = head + sum tail</code></pre>
-    </section>
-
-    <section>
-        <h3>Récursivité - Exercice</h3>
         <div class="instructions">
             <ol>
                 <li>
-                    Créez une fonction récursive <code class="language-js">fibonacci(n)</code> qui retourne le n-ième
-                    nombre de la suite de Fibonacci.
+                    Appelez la fonction <code class="language-js">fibonacci(n)</code> avec le nombre 40 et mesurez
+                    le temps d'exécution en utilisant les méthodes <code class="language-js">console.time()</code>
+                    et <code class="language-js">console.timeEnd()</code>.
                 </li>
                 <li>
-                    Créez une fonction récursive <code class="language-js">reverse(str)</code> qui retourne une chaîne
-                    de caractères inversée.
-                </li>
-                <li>
-                    Créez une fonction récursive <code class="language-js">flatten(arr)</code> qui retourne un tableau
-                    à une dimension à partir d'un tableau multidimensionnel.
-                </li>
-                <li>
-                    Créez une fonction récursive <code class="language-js">factorial(n)</code> qui retourne la factorielle
-                    d'un nombre.
+                    Créez une fonction <code class="language-js">memoize(fn)</code> qui sera une fonction d'ordre supérieur
+                    et qui prendra en paramètre une fonction et retournera une nouvelle fonction qui mémorisera les résultats.
                 </li>
             </ol>
         </div>
+        <p>
+            Vous aurez besoin de récupérer l'ensemble des arguments passés à une fonction. Pour cela, vous pouvez utiliser
+            le spread operator <code class="language-js">...</code> :
+        </p>
+        <pre><code class="language-js">(...args) => { /* ... */ }</code></pre>
     </section>
 
     <section>
