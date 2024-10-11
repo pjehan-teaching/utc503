@@ -1,7 +1,7 @@
 <section id="functional">
 
     <section>
-        <h2>Paradigmes Fonctionnel</h2>
+        <h2>Paradigme Fonctionnel</h2>
     </section>
 
     <section>
@@ -406,10 +406,21 @@ sum (head:tail) = head + sum tail</code></pre>
                 <li>
                     Créez une fonction récursive <code class="language-js">flatten(arr)</code> qui retourne un tableau
                     à une dimension à partir d'un tableau multidimensionnel.
+                    <pre><code class="language-js">console.log(flatten([1, [2, [3, [4]], 5]])); // [1, 2, 3, 4, 5]</code></pre>
                 </li>
                 <li>
                     Créez une fonction récursive <code class="language-js">binaryTreeSum(tree)</code> qui retourne la
                     somme des valeurs d'un arbre binaire.
+                    <pre style="max-width: 100%; overflow-x: auto;"><code class="language-js">const tree = {
+    value: 1,
+    left: {
+        value: 2,
+        left: { value: 3, left: null, right: null },
+        right: { value: 4, left: null, right: null }
+    },
+    right: { value: 5, left: null, right: null }
+};
+console.log(binaryTreeSum(tree)); // 15</code></pre>
                 </li>
             </ol>
         </div>
@@ -446,12 +457,43 @@ promise.then(result => console.log(result)) // Success!
             <strong>l'entrelacement</strong> (<a href="http://callbackhell.com/" target="_blank">callback hell</a>).
         </p>
         <p>
+            Elles sont très souvent utilisées en JavaScript avec les mots-clés <code>async</code> et <code>await</code>
+            pour rendre le code plus lisible et plus facile à comprendre :
+        </p>
+        <pre><code class="language-js">function fetchData(url, callback, err) {
+    fetch(url)
+        .then(response => response.json())
+        .then(json => callback(json));
+        .catch(error => err(error));
+}</code></pre>
+        <pre><code class="language-js">async function fetchData(url) {
+    const response = await fetch(url);
+    const json = await response.json();
+    return json;
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Promises - NodeJS</h3>
+        <p>
             NodeJS propose dans sa bibliothèque standard des fonctions qui retournent des promesses, comme par exemple
             <code class="language-js">fs.promises.readFile()</code> pour lire un fichier.
         </p>
         <a href="https://nodejs.org/en/learn/manipulating-files/reading-files-with-nodejs" target="_blank">
             Node.js - Reading files with Node.js
         </a>
+    </section>
+
+    <section>
+        <h3>Exercice - Promises</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Utilisez les fonctions <code class="language-js">fs.readdir()</code> et <code class="language-js">fs.stat()</code>
+                    pour lister les fichiers d'un répertoire et afficher leur taille.
+                </li>
+            </ol>
+        </div>
     </section>
 
     <section>
@@ -491,36 +533,6 @@ const person = createPerson('Alice');
 console.log(person.getName()); // Alice
 person.setName('Bob');
 console.log(person.getName()); // Bob</code></pre>
-    </section>
-
-    <section>
-        <h3>Closure - Asynchronisme</h3>
-        <p>
-            Les fermetures sont particulièrement utiles pour gérer l'asynchronisme en JavaScript.
-        </p>
-        <pre><code class="language-js">function fetchData(url) {
-    let data = null;
-    fetch(url)
-        .then(response => response.json())
-        .then(json => data = json);
-    return data;
-} // Cette fonction retourne toujours null
-
-const data = fetchData('https://api.example.com/data');
-console.log(data); // null</code></pre>
-        <p>
-            Dans cet exemple, la fonction <code class="language-js">fetchData()</code> retourne toujours <code>null</code>
-            car la requête <code>fetch()</code> est asynchrone et la variable <code>data</code> n'est pas encore définie
-            au moment du retour de la fonction.
-        </p>
-        <div class="instructions">
-            <ol>
-                <li>
-                    Modifiez la fonction <code class="language-js">fetchData()</code> pour qu'elle prenne en paramètre
-                    une fonction de rappel (callback) qui sera appelée lorsque les données seront disponibles.
-                </li>
-            </ol>
-        </div>
     </section>
 
     <section>
@@ -636,15 +648,15 @@ info('Second log');</code></pre>
                     arguments.
                 </li>
                 <li>
-                    Utilisez la currification pour créer une fonction <code class="language-js">add5(x)</code> qui
+                    En utilisant la fonction <code class="language-js">add()</code>, utilisez la currification pour créer une fonction <code class="language-js">add5(x)</code> qui
                     ajoute 5 à un nombre.
                 </li>
                 <li>
-                    Utilisez la currification pour créer une fonction <code class="language-js">add10(x)</code> qui
+                    En utilisant la fonction <code class="language-js">add()</code>, utilisez la currification pour créer une fonction <code class="language-js">add10(x)</code> qui
                     ajoute 10 à un nombre.
                 </li>
                 <li>
-                    Utilisez la currification pour créer une fonction <code class="language-js">add5and10(x)</code> qui
+                    En utilisant la fonction <code class="language-js">add()</code>, utilisez la currification pour créer une fonction <code class="language-js">add5and10(x)</code> qui
                     ajoute 5 et 10 à un nombre.
                 </li>
             </ol>
@@ -686,6 +698,12 @@ info('Second log');</code></pre>
                     Cette fonction devra reproduire le comportement de la méthode <code class="language-js">map()</code>
                     de JavaScript, mais en ajoutant une puce devant chaque élément.
                 </li>
+                <li>
+                    Exemple :
+                    <pre><code class="language-js">const arr = [1, 2, 3];
+const result = mapToList(x => x * x, arr);
+console.log(result); // ['• 1', '• 4', '• 9']</code></pre>
+                </li>
             </ul>
         </div>
     </section>
@@ -714,6 +732,9 @@ info('Second log');</code></pre>
             le spread operator <code class="language-js">...</code> :
         </p>
         <pre><code class="language-js">(...args) => { /* ... */ }</code></pre>
+        <footer>
+            <a href="#" class="info">La mémoïsation utilise le concept de fermeture (closure)</a>
+        </footer>
     </section>
 
     <section>
