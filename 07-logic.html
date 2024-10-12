@@ -219,6 +219,51 @@ grandparent(X, Z) :- parent(X, Y), parent(Y, Z). % X is the grandparent of Z if 
     </section>
 
     <section>
+        <h3>Règles (rules) - Opérateurs</h3>
+        <p>
+            En Prolog, il existe plusieurs opérateurs logiques qui peuvent être utilisés pour définir des règles.
+        </p>
+        <ul>
+            <li>
+                L'opérateur <code class="language-prolog">,</code> est utilisé pour effectuer une conjonction (AND).
+                <pre><code class="language-prolog">grandparent(X, Z) :- parent(X, Y), parent(Y, Z).</code></pre>
+            </li>
+            <li>
+                L'opérateur <code>;</code> est utilisé pour effectuer une disjonction (OR).
+                <pre><code class="language-prolog">parent(X, Y) :- mother(X, Y); father(X, Y).</code></pre>
+            </li>
+            <li>
+                L'opérateur <code>\+</code> est utilisé pour effectuer une négation (NOT).
+                <pre><code class="language-prolog">not_parent(X, Y) :- \+ parent(X, Y).</code></pre>
+            </li>
+            <li>
+                L'opérateur <code>==</code> est utilisé pour effectuer une égalité stricte (STRICT EQUAL).
+                <pre><code class="language-prolog">same(X, Y) :- X == Y.</code></pre>
+            </li>
+            <li>
+                L'opérateur <code>\=</code> est utilisé pour effectuer une différence (NOT EQUAL).
+                <pre><code class="language-prolog">different(X, Y) :- X \= Y.</code></pre>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Exercice - Étudiants / Enseignants</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Ajouter une règle pour déterminer si une personne est spécialisée dans les mathématiques c'est-à-dire
+                    si elle enseigne uniquement les mathématiques.
+                </li>
+                <li>
+                    Ajouter une règle pour déterminer si une personne est spécialisée dans une seule matière quelqu'elle
+                    soit.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
         <h3>Unification</h3>
         <p>
             L'<strong>unification</strong> est un concept fondamental en Prolog. C'est un mécanisme qui permet de
@@ -342,6 +387,7 @@ sum([Head | Tail], Total) :- sum(Tail, Sum), Total is Head + Sum.</code></pre>
         <p>
             Pour activer le mode trace, il suffit de taper la commande <code>trace.</code> dans l'interpréteur Prolog
             puis d'exécuter une requête. Prolog affichera alors chaque étape de l'exécution du programme.
+            (<code>notrace.</code> permet de désactiver le mode trace).
         </p>
         <div class="container">
             <div class="col">
