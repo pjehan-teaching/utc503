@@ -1,0 +1,17 @@
+body  {
+    margin: 0;
+}
+
+body > section:first-child {
+    background-color: lightblue;
+}
+
+body > section > section:first-child {
+    background-color: #f0f0f0;
+    break-before: page;
+}
+
+section {
+    border-bottom: 1px solid #000;
+    break-inside: avoid;
+}
