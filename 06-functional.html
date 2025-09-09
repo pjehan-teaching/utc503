@@ -40,7 +40,7 @@
             </li>
         </ul>
         <p>
-            Par la suite, nous aborderons quelques examples de programmation fonctionnelle Haskell que vous pourrez
+            Par la suite, nous aborderons quelques examples de programmation fonctionnelle en Haskell que vous pourrez
             exécuter directement dans votre navigateur (<a href="https://play.haskell.org/">https://play.haskell.org/</a>).
         </p>
     </section>
@@ -114,7 +114,7 @@ console.log(arr); // [1, 2, 3]</code></pre>
             l'état global du tableau <code class="language-js">arr</code> et a donc un effet de bord.
         </p>
         <footer>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted" class="info">
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted" class="info" target="_blank">
                 MDN Web Docs - Array.prototype.toSorted()
             </a>
         </footer>
@@ -632,6 +632,35 @@ info('Second log');</code></pre>
         <pre><code class="language-js">function log(date) {
     return level => message => console.log(`[${date}] [${level}] ${message}`);
 }</code></pre>
+    </section>
+
+    <section>
+        <h3>Currying - Exemple</h3>
+        <p>
+            La currification peut également être pratique lorsque l'on utilise des <strong>librairies externes</strong>
+            et que l'on souhaite souvent appeler une fonction avec les mêmes arguments.
+        </p>
+        <pre class="language-js"><code>import { filter } from 'lodash'; // La fonction filter prend 2 arguments (un tableau et une fonction)
+
+const isEven = x => x % 2 === 0;
+const createFilter = predicate => arr => filter(arr, predicate); // Currification de la fonction filter
+const filterEven = createFilter(isEven); // Fonction partielle qui filtre les nombres pairs
+console.log(filterEven([1, 2, 3, 4, 5])); // [2, 4]</code></pre>
+    </section>
+
+    <section>
+        <h3>Currying - Haskell</h3>
+        <p>
+            Le langage Haskell impose l'utilisation de la currification puisque le langage
+            <strong>ne permet pas de passer plusieurs paramètres à une fonction</strong> 😳 !
+        </p>
+        <p>
+            (en réalité, c'est possible, mais le <strong>langage effectuera la currification</strong> pour nous automatiquement)
+        </p>
+        <pre class="language-haskell"><code>add :: Num a => a -> a -> a -- Équivalent de Num a => a -> (a -> a)
+add x y = x + y
+
+addTuple = uncurry add -- Cette fonction attend 1 seul argument de type tuple</code></pre>
     </section>
 
     <section>
